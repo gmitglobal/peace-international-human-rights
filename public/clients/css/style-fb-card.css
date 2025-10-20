@@ -1,0 +1,25 @@
+/* Media Section */
+.fb-media-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease-in-out;
+}
+
+.fb-media-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+.fb-media-card img.rounded-circle {
+  object-fit: cover;
+}
+
+.fb-media-card p {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+#media {
+  background: var(--muted-bg);
+}

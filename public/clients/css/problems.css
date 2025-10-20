@@ -1,0 +1,77 @@
+/* Problems Section */
+.problems-section {
+  background-color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* Wrapper to handle scroll overflow cleanly */
+.problems-wrapper {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden; /* force horizontal only */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Horizontal Slider */
+.problems-slider {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  width: max-content; /* keeps items in a single row */
+  padding-bottom: 0.5rem;
+}
+
+.problems-slider::-webkit-scrollbar {
+  height: 8px;
+}
+.problems-slider::-webkit-scrollbar-thumb {
+  background-color: rgba(42, 54, 147, 0.3);
+  border-radius: 10px;
+}
+.problems-slider::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Problem Cards */
+.problem-card {
+  flex: 0 0 auto;
+  width: 320px;
+  background-color: #f7f9fb;
+  border-radius: 16px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.problem-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Inside Cards */
+.problem-title {
+  font-size: 1.1rem;
+}
+.problem-desc {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.btn-help {
+  background-color: #28a745;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+.btn-help:hover {
+  background-color: #218838;
+}
+
+/* Brand Colors */
+.text-brand-deep {
+  color: #2a3693 !important;
+}
+.text-brand-sky {
+  color: #00aeef !important;
+}

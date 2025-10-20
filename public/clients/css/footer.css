@@ -1,0 +1,40 @@
+/* Footer main styling */
+.pihr-footer {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.pihr-footer a {
+  color: #00aeef;
+  text-decoration: none;
+}
+
+.pihr-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Column headings */
+.pihr-footer h5 {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* Social Icons */
+.pihr-social-icons a {
+  color: #ffffff;
+  margin-right: 10px;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.pihr-social-icons a:hover {
+  color: #00aeef;
+}
+
+/* Bottom strip */
+.pihr-footer-bottom {
+  background-color: #2a3693;
+  color: #ffffff;
+  font-size: 0.9rem;
+}
