@@ -73,11 +73,11 @@
                             </div>
                         </div>
 
-                        {{-- Address --}}
+                        {{-- present_address --}}
                         <div class="mb-3 row">
-                            <label for="address" class="col-sm-3 col-form-label">Address</label>
+                            <label for="present_address" class="col-sm-3 col-form-label">present_address</label>
                             <div class="col-sm-9">
-                                <textarea name="address" id="address" rows="3" class="form-control" placeholder="Address">{{ old('address', $data->address) }}</textarea>
+                                <textarea name="present_address" id="present_address" rows="3" class="form-control" placeholder="present_address">{{ old('present_address', $data->present_address) }}</textarea>
                             </div>
                         </div>
 

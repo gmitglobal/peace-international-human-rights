@@ -7,6 +7,5 @@
             <p class="mb-0">Copyright ©
                 <span id="year"></span>.
                 All right reserved.
-                Design & Maintain By Faisal A Salam
             </p>
         </footer>

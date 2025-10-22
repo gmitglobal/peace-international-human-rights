@@ -23,43 +23,85 @@ class AdminController extends Controller
         $validated = $request->validate(
             [
                 'name' => 'required|max:150',
-                'photo' => 'nullable|image|mimes:jpg,png,jpeg,webp|max:51200', ## 50MB in KB
+                'email' => 'nullable|email|max:255',
+                'phone' => 'required|string|max:20|unique:users,phone,' . Auth::id(),
+                'wphone' => 'nullable|string|max:20',
+                'father_name' => 'nullable|string|max:255',
+                'mother_name' => 'nullable|string|max:255',
+                'birth_certificate_no' => 'nullable|string|max:255',
+                'present_address' => 'nullable|string|max:500',
+                'permanent_address' => 'nullable|string|max:500',
+                'division' => 'nullable|string|max:255',
+                'district' => 'nullable|string|max:255',
+                'thana' => 'nullable|string|max:255',
+                'ward' => 'nullable|string|max:255',
+                'central' => 'nullable|string|max:255',
+                'photo' => 'nullable|image|mimes:jpg,png,jpeg,webp|max:51200', // 50MB in KB
+                'signature' => 'nullable|image|mimes:jpg,png,jpeg,webp|max:51200',
             ],
             [
                 'name.required' => 'Name field cannot be empty',
-                'name.max' => 'Name should not be more than 150 characters',
-                'photo.image' => 'Image should be .png, .jpg, .jpeg, or .webp',
+                'photo.image' => 'Profile photo must be an image',
+                'photo.mimes' => 'Only jpg, jpeg, png, and webp formats are allowed',
+                'phone.required' => 'Phone number is required',
+                'phone.unique' => 'This phone number is already taken',
             ]
         );
 
         $user = Auth::user();
 
-        ## ✅ Update user fields
+        ## ✅ Update profile fields
         $user->name = $request->name;
+        $user->email = $request->email;
         $user->phone = $request->phone;
-        $user->address = $request->address;
+        $user->wphone = $request->wphone;
+        $user->father_name = $request->father_name;
+        $user->mother_name = $request->mother_name;
+        $user->birth_certificate_no = $request->birth_certificate_no;
+        $user->present_address = $request->present_address;
+        $user->permanent_address = $request->permanent_address;
+        $user->division = $request->division;
+        $user->district = $request->district;
+        $user->thana = $request->thana;
+        $user->ward = $request->ward;
+        $user->central = $request->central;
 
-        ## ✅ Handle profile image upload
+        ## ✅ Handle profile photo upload
         if ($request->hasFile('photo')) {
             $file = $request->file('photo');
 
-            ## Delete old image if exists
-            if ($user->image && file_exists(public_path($user->image))) {
-                @unlink(public_path($user->image));
+            // Delete old image if exists
+            if ($user->photo && file_exists(public_path($user->photo))) {
+                @unlink(public_path($user->photo));
             }
 
-            ## Generate new filename and store
             $filename = now()->format('Ymd_His') . '_' . $file->getClientOriginalName();
-            $filePath = 'uploads/admin_images/' . $filename;
-            $file->move(public_path('uploads/admin_images'), $filename);
+            $filePath = 'uploads/user_photos/' . $filename;
+            $file->move(public_path('uploads/user_photos'), $filename);
 
-            $user->image = $filePath;
+            $user->photo = $filePath;
+        }
+
+        ## ✅ Handle signature upload
+        if ($request->hasFile('signature')) {
+            $file = $request->file('signature');
+
+            // Delete old signature if exists
+            if ($user->signature && file_exists(public_path($user->signature))) {
+                @unlink(public_path($user->signature));
+            }
+
+            $filename = now()->format('Ymd_His') . '_' . $file->getClientOriginalName();
+            $filePath = 'uploads/user_signatures/' . $filename;
+            $file->move(public_path('uploads/user_signatures'), $filename);
+
+            $user->signature = $filePath;
         }
 
         $user->save();
 
         return redirect()->back()->with([
-            'message' => 'Admin profile updated successfully.',
+            'message' => 'Profile updated successfully.',
             'alert-type' => 'success',
         ]);
     } ## End Mehtod

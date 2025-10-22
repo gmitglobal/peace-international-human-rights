@@ -18,7 +18,13 @@
 </head>
 
 <body>
+    <!-- Navbar -->
+    @include('clients.components.navbar')
+
     @yield('content')
+
+    <!-- Footer -->
+    @include('clients.components.footer')
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
