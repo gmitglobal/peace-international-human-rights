@@ -12,7 +12,8 @@
                     <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">Activities</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login/Signup</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
                 </ul>
                 <a href="#donate" class="btn btn-primary ms-lg-3">Donate</a>
             </div>

@@ -18,12 +18,39 @@
     <link href="{{ asset('admin/assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/assets/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/assets/css/icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('clients/css/footer.css') }}" rel="stylesheet" />
     <title>Admin Sign In Page</title>
+
+
+
 </head>
 
 <body class="bg-login">
     <!--wrapper-->
     <div class="wrapper">
+        <nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
+            <div class="container">
+                <a class="navbar-brand fw-bold text-primary" href="#">
+                    <img src="{{ asset('clients/images/logo/logo.png') }}" alt="Peace Logo" height="120"
+                        class="me-2">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link active" href="{{ route('home') }}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about">Activities</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
+                    </ul>
+                    <a href="#donate" class="btn btn-primary ms-lg-3">Donate</a>
+                </div>
+            </div>
+        </nav>
+
         <div class="section-authentication-signin d-flex align-items-center justify-content-center my-5 my-lg-0">
             <div class="container-fluid">
                 <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
@@ -95,6 +122,50 @@
             </div>
             <!--end row-->
         </div>
+
+        <footer class="pihr-footer">
+            <div class="container py-5">
+                <div class="row">
+                    <!-- About Column -->
+                    <div class="col-md-4 mb-4 pihr-footer-about">
+                        <h5 style="color: aliceblue">About</h5>
+                        <p>Peace International Human Rights is committed to promoting human rights, peace, and equality
+                            worldwide.</p>
+                    </div>
+
+                    <!-- Quick Links Column -->
+                    <div class="col-md-4 mb-4 pihr-footer-links">
+                        <h5 style="color: aliceblue">Quick Links</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Programs</a></li>
+                            <li><a href="#">Get Involved</a></li>
+                            <li><a href="#">Donate</a></li>
+                            <li><a href="./privacy-policy.html">Privacy Policy</a></li>
+                            <li><a href="./terms-conditions.html">Terms Conditions</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Column -->
+                    <div class="col-md-4 mb-4 pihr-footer-contact">
+                        <h5 style="color: aliceblue">Contact</h5>
+                        <p>Email: info@pihr.org</p>
+                        <p>Phone: +123 456 7890</p>
+                        <div class="pihr-social-icons mt-2">
+                            <a href="#"><i class="bx bxl-facebook"></i></a>
+                            <a href="#"><i class="bx bxl-twitter"></i></a>
+                            <a href="#"><i class="bx bxl-linkedin"></i></a>
+                            <a href="#"><i class="bx bxl-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Strip -->
+            <div class="pihr-footer-bottom text-center py-3">
+                <p class="mb-0">Copyright © Peace International Human Rights</p>
+            </div>
+        </footer>
     </div>
     <!--end wrapper-->
     <!-- Bootstrap JS -->

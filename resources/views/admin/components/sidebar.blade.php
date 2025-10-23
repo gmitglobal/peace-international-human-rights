@@ -20,6 +20,12 @@
                 <div class="menu-title">Dashboard</div>
             </a>
         </li>
+        <li>
+            <a href="{{ route('admin.member.list') }}">
+                <div class="parent-icon"><i class='bx bx-cookie'></i></div>
+                <div class="menu-title">Member List</div>
+            </a>
+        </li>
         {{-- <li>
             <a href="{{ route('admin.shop.index') }}">
                 <div class="parent-icon"><i class='bx bx-cookie'></i></div>

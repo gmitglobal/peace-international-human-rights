@@ -37,6 +37,7 @@ class AdminController extends Controller
                 'ward' => 'nullable|string|max:255',
                 'central' => 'nullable|string|max:255',
                 'photo' => 'nullable|image|mimes:jpg,png,jpeg,webp|max:51200', // 50MB in KB
+                'nid' => 'nullable|image|mimes:jpg,png,jpeg,webp|max:51200',
                 'signature' => 'nullable|image|mimes:jpg,png,jpeg,webp|max:51200',
             ],
             [
@@ -96,6 +97,22 @@ class AdminController extends Controller
             $file->move(public_path('uploads/user_signatures'), $filename);
 
             $user->signature = $filePath;
+        }
+
+        ## ✅ Handle nid upload
+        if ($request->hasFile('nid')) {
+            $file = $request->file('nid');
+
+            // Delete old nid if exists
+            if ($user->nid && file_exists(public_path($user->nid))) {
+                @unlink(public_path($user->nid));
+            }
+
+            $filename = now()->format('Ymd_His') . '_' . $file->getClientOriginalName();
+            $filePath = 'uploads/user_nids/' . $filename;
+            $file->move(public_path('uploads/user_nids'), $filename);
+
+            $user->nid = $filePath;
         }
 
         $user->save();

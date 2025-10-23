@@ -3,9 +3,10 @@
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\LocationController;
+use App\Http\Controllers\Backend\MemberController;
 use App\Http\Controllers\Backend\ShopController;
 use App\Http\Controllers\Backend\SiteSettingController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -29,8 +30,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('admin/status/toggle/{id}', [AdminController::class, 'toggleStatus'])->name('admin.toggle.status');
 
-
-
     ## Category
     Route::get('admin/category/index',  [CategoryController::class, 'index'])->name('admin.category.index');
     Route::get('admin/category/create', [CategoryController::class, 'create'])->name('admin.category.create');
@@ -41,6 +40,29 @@ Route::middleware(['auth'])->group(function () {
     Route::post('admin/category/destroy/{id}', [CategoryController::class, 'destroy'])->name('admin.category.destroy');
 
     Route::get('admin/category/status/toggle/{id}', [CategoryController::class, 'toggleStatus'])->name('admin.category.toggle.status');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    ## Member
+    Route::get('admin/member/list', [MemberController::class, 'index'])->name('admin.member.list');
+    Route::get('admin/member/details/{id}', [MemberController::class, 'details'])->name('admin.member.details');
+    Route::get('admin/member/status/{id}', [MemberController::class, 'toggleStatus'])->name('admin.member.status');
+    Route::post('admin/member/destroy/{id}', [MemberController::class, 'destroy'])->name('admin.member.destroy');
 });
 ### Protected Route Admin Profile & Password Pages End
 
@@ -94,3 +116,6 @@ require __DIR__ . '/auth.php';
 ## SiteSetting
 Route::get('/settings/create', [SiteSettingController::class, 'create'])->name('settings.create');
 Route::post('/settings/update', [SiteSettingController::class, 'update'])->name('settings.update');
+
+
+Route::get('/locations/{type}/{id?}', [LocationController::class, 'getData']);

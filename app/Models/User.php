@@ -62,4 +62,33 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+    // ✅ Define relationship with Division model
+    public function divisions()
+    {
+        // This means: each user (or record in this model)
+        // belongs to one Division.
+        // The foreign key in this table is 'division' (column name)
+        // and it links to the 'id' column in the divisions table.
+        return $this->belongsTo(Division::class, 'division');
+    }
+
+    // ✅ Define relationship with District model
+    public function districts()
+    {
+        // This means: each user belongs to one District.
+        // 'district' is the foreign key column in this model’s table,
+        // pointing to the 'id' in the districts table.
+        return $this->belongsTo(District::class, 'district');
+    }
+
+    // ✅ Define relationship with Thana model
+    public function thanas()
+    {
+        // This means: each user belongs to one Thana (police station area).
+        // 'thana' is the foreign key column in this model’s table,
+        // referring to 'id' in the thanas table.
+        return $this->belongsTo(Thana::class, 'thana');
+    }
 }

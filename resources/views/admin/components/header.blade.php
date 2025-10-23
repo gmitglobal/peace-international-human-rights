@@ -48,11 +48,11 @@
                         </a>
                     </li>
                     @if (Auth()->user()->role == 'admin')
-                        <li>
+                        {{-- <li>
                             <a class="dropdown-item" href="{{ route('admin.register.page') }}">
                                 <i class="bx bx-user"></i><span>Register New Member</span>
                             </a>
-                        </li>
+                        </li> --}}
                     @endif
 
                     <li>
