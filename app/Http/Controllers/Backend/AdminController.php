@@ -22,50 +22,50 @@ class AdminController extends Controller
         ## ✅ Validate the request
         $validated = $request->validate(
             [
-                'name' => 'required|max:150',
-                'email' => 'nullable|email|max:255',
-                'phone' => 'required|string|max:20|unique:users,phone,' . Auth::id(),
-                'wphone' => 'nullable|string|max:20',
-                'father_name' => 'nullable|string|max:255',
-                'mother_name' => 'nullable|string|max:255',
+                'name'                 => 'required|max:150',
+                'email'                => 'nullable|email|max:255',
+                'phone'                => 'required|string|max:20|unique:users,phone,' . Auth::id(),
+                'wphone'               => 'nullable|string|max:20',
+                'father_name'          => 'nullable|string|max:255',
+                'mother_name'          => 'nullable|string|max:255',
                 'birth_certificate_no' => 'nullable|string|max:255',
-                'present_address' => 'nullable|string|max:500',
-                'permanent_address' => 'nullable|string|max:500',
-                'division' => 'nullable|string|max:255',
-                'district' => 'nullable|string|max:255',
-                'thana' => 'nullable|string|max:255',
-                'ward' => 'nullable|string|max:255',
-                'central' => 'nullable|string|max:255',
-                'photo' => 'nullable|image|mimes:jpg,png,jpeg,webp|max:51200', // 50MB in KB
-                'nid' => 'nullable|image|mimes:jpg,png,jpeg,webp|max:51200',
-                'signature' => 'nullable|image|mimes:jpg,png,jpeg,webp|max:51200',
+                'present_address'      => 'nullable|string|max:500',
+                'permanent_address'    => 'nullable|string|max:500',
+                'division'             => 'nullable|string|max:255',
+                'district'             => 'nullable|string|max:255',
+                'thana'                => 'nullable|string|max:255',
+                'ward'                 => 'nullable|string|max:255',
+                'central'              => 'nullable|string|max:255',
+                'photo'                => 'nullable|image|mimes:jpg,png,jpeg,webp|max:51200', // 50MB in KB
+                'nid'                  => 'nullable|image|mimes:jpg,png,jpeg,webp|max:51200',
+                'signature'            => 'nullable|image|mimes:jpg,png,jpeg,webp|max:51200',
             ],
             [
-                'name.required' => 'Name field cannot be empty',
-                'photo.image' => 'Profile photo must be an image',
-                'photo.mimes' => 'Only jpg, jpeg, png, and webp formats are allowed',
+                'name.required'  => 'Name field cannot be empty',
+                'photo.image'    => 'Profile photo must be an image',
+                'photo.mimes'    => 'Only jpg, jpeg, png, and webp formats are allowed',
                 'phone.required' => 'Phone number is required',
-                'phone.unique' => 'This phone number is already taken',
+                'phone.unique'   => 'This phone number is already taken',
             ]
         );
 
         $user = Auth::user();
 
         ## ✅ Update profile fields
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->phone = $request->phone;
-        $user->wphone = $request->wphone;
-        $user->father_name = $request->father_name;
-        $user->mother_name = $request->mother_name;
+        $user->name                 = $request->name;
+        $user->email                = $request->email;
+        $user->phone                = $request->phone;
+        $user->wphone               = $request->wphone;
+        $user->father_name          = $request->father_name;
+        $user->mother_name          = $request->mother_name;
         $user->birth_certificate_no = $request->birth_certificate_no;
-        $user->present_address = $request->present_address;
-        $user->permanent_address = $request->permanent_address;
-        $user->division = $request->division;
-        $user->district = $request->district;
-        $user->thana = $request->thana;
-        $user->ward = $request->ward;
-        $user->central = $request->central;
+        $user->present_address      = $request->present_address;
+        $user->permanent_address    = $request->permanent_address;
+        $user->division             = $request->division;
+        $user->district             = $request->district;
+        $user->thana                = $request->thana;
+        $user->ward                 = $request->ward;
+        $user->central              = $request->central;
 
         ## ✅ Handle profile photo upload
         if ($request->hasFile('photo')) {

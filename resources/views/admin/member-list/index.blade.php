@@ -72,13 +72,13 @@
                                             <i class="fas fa-edit"></i>
                                         </a>
 
-                                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                                        {{-- <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
                                             data-bs-target="#deleteModal_{{ $item->id }}">
                                             <i class="fas fa-trash-alt"></i>
-                                        </button>
+                                        </button> --}}
 
                                         <!-- Delete Modal -->
-                                        <div class="modal fade" id="deleteModal_{{ $item->id }}" tabindex="-1"
+                                        {{-- <div class="modal fade" id="deleteModal_{{ $item->id }}" tabindex="-1"
                                             aria-labelledby="deleteModalLabel_{{ $item->id }}" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog">
                                                 <form action="{{ route('admin.member.destroy', $item->id) }}"
@@ -107,7 +107,7 @@
                                                     </div>
                                                 </form>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </td>
                                 </tr>
                             @empty

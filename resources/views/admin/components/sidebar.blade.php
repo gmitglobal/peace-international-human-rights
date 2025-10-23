@@ -1,11 +1,11 @@
 <div class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
         <div>
-            <img src="{{ !empty(Auth()->user()->image) ? asset(Auth()->user()->image) : asset('no_image.jpg') }}"
+            <img src="{{ !empty(Auth()->user()->photo) ? asset(Auth()->user()->photo) : asset('no_image.jpg') }}"
                 class="logo-icon" alt="logo icon">
         </div>
         <div>
-            <h4 class="logo-text">Admin</h4>
+            <h4 class="logo-text"></h4>
         </div>
         <div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i>
         </div>
@@ -20,12 +20,24 @@
                 <div class="menu-title">Dashboard</div>
             </a>
         </li>
+
+        @if (Auth::user()->role == 'admin')
+            <li>
+                <a href="{{ route('admin.member.list') }}">
+                    <div class="parent-icon"><i class='bx bx-cookie'></i></div>
+                    <div class="menu-title">Member List</div>
+                </a>
+            </li>
+        @endif
+
+        <hr>
         <li>
-            <a href="{{ route('admin.member.list') }}">
+            <a href="{{ route('home') }}">
                 <div class="parent-icon"><i class='bx bx-cookie'></i></div>
-                <div class="menu-title">Member List</div>
+                <div class="menu-title">View Website</div>
             </a>
         </li>
+
         {{-- <li>
             <a href="{{ route('admin.shop.index') }}">
                 <div class="parent-icon"><i class='bx bx-cookie'></i></div>

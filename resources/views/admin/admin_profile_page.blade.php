@@ -82,6 +82,15 @@
                             </div>
                         </div>
 
+                        {{-- Email --}}
+                        <div class="mb-3 row">
+                            <label for="email" class="col-sm-3 col-form-label">Email</label>
+                            <div class="col-sm-9">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Email"
+                                    value="{{ old('Email', $data->email) }}">
+                            </div>
+                        </div>
+
 
                         {{-- father_name --}}
                         <div class="mb-3 row">

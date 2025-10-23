@@ -112,6 +112,7 @@
                                                 @endif
                                             </li>
                                             <li>
+                                                <hr>
                                                 <strong>Signature:</strong><br>
                                                 @if ($user->signature)
                                                     <img src="{{ $user->signature ? asset($user->signature) : asset('no_image.jpg') }}"

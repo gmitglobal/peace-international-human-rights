@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-12">
             <div class="alert alert-warning" role="alert">
-                <h3>Coming Soon</h3>
+                <h3>Pls Fillup Your Profile <a href="{{ route('admin.profile.page') }}" class="btn btn-sm btn-primary">Click Here</a></h3>
             </div>
         </div>
     </div>
