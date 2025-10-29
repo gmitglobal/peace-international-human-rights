@@ -149,8 +149,9 @@
                     <!-- Contact Column -->
                     <div class="col-md-4 mb-4 pihr-footer-contact">
                         <h5 style="color: aliceblue">Contact</h5>
-                        <p>Email: info@pihr.org</p>
-                        <p>Phone: +123 456 7890</p>
+                        <p>Email: info@peaceihr.org</p>
+                        <p>Phone: 01404000952</p>
+                        <p>Address: 11th Floor, System imperial Complex, Chawkbazar, Chittagong</p>
                         <div class="pihr-social-icons mt-2">
                             <a href="#"><i class="bx bxl-facebook"></i></a>
                             <a href="#"><i class="bx bxl-twitter"></i></a>
