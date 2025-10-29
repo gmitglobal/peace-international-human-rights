@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\LocationController;
 use App\Http\Controllers\Backend\MemberController;
 use App\Http\Controllers\Backend\ShopController;
 use App\Http\Controllers\Backend\SiteSettingController;
+use App\Http\Controllers\Backend\SliderController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -63,6 +64,19 @@ Route::middleware(['auth'])->group(function () {
     Route::get('admin/member/details/{id}', [MemberController::class, 'details'])->name('admin.member.details');
     Route::get('admin/member/status/{id}', [MemberController::class, 'toggleStatus'])->name('admin.member.status');
     Route::post('admin/member/destroy/{id}', [MemberController::class, 'destroy'])->name('admin.member.destroy');
+
+
+
+    ## Category
+    Route::get('admin/slider/index',  [SliderController::class, 'index'])->name('admin.slider.index');
+    Route::get('admin/slider/create', [SliderController::class, 'create'])->name('admin.slider.create');
+    Route::get('admin/slider/edit/{id}', [SliderController::class, 'edit'])->name('admin.slider.edit');
+
+    Route::post('admin/slider/store', [SliderController::class, 'store'])->name('admin.slider.store');
+    Route::post('admin/slider/update/{id}', [SliderController::class, 'update'])->name('admin.slider.update');
+    Route::post('admin/slider/destroy/{id}', [SliderController::class, 'destroy'])->name('admin.slider.destroy');
+
+    Route::get('admin/slider/status/toggle/{id}', [SliderController::class, 'toggleStatus'])->name('admin.slider.toggle.status');
 });
 ### Protected Route Admin Profile & Password Pages End
 
