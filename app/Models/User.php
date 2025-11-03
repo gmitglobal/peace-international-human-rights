@@ -91,4 +91,10 @@ class User extends Authenticatable
         // referring to 'id' in the thanas table.
         return $this->belongsTo(Thana::class, 'thana');
     }
+
+
+    public function activities()
+    {
+        return $this->hasMany(Activites::class);
+    }
 }

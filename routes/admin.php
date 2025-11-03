@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\ActivitiesController;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
@@ -66,17 +67,24 @@ Route::middleware(['auth'])->group(function () {
     Route::post('admin/member/destroy/{id}', [MemberController::class, 'destroy'])->name('admin.member.destroy');
 
 
-
-    ## Category
+    ## Slider
     Route::get('admin/slider/index',  [SliderController::class, 'index'])->name('admin.slider.index');
     Route::get('admin/slider/create', [SliderController::class, 'create'])->name('admin.slider.create');
     Route::get('admin/slider/edit/{id}', [SliderController::class, 'edit'])->name('admin.slider.edit');
-
     Route::post('admin/slider/store', [SliderController::class, 'store'])->name('admin.slider.store');
     Route::post('admin/slider/update/{id}', [SliderController::class, 'update'])->name('admin.slider.update');
     Route::post('admin/slider/destroy/{id}', [SliderController::class, 'destroy'])->name('admin.slider.destroy');
-
     Route::get('admin/slider/status/toggle/{id}', [SliderController::class, 'toggleStatus'])->name('admin.slider.toggle.status');
+
+
+    ## Activities
+    Route::get('admin/activities/index',  [ActivitiesController::class, 'index'])->name('admin.activities.index');
+    Route::get('admin/activities/create', [ActivitiesController::class, 'create'])->name('admin.activities.create');
+    Route::get('admin/activities/edit/{id}', [ActivitiesController::class, 'edit'])->name('admin.activities.edit');
+    Route::post('admin/activities/store', [ActivitiesController::class, 'store'])->name('admin.activities.store');
+    Route::post('admin/activities/update/{id}', [ActivitiesController::class, 'update'])->name('admin.activities.update');
+    Route::post('admin/activities/destroy/{id}', [ActivitiesController::class, 'destroy'])->name('admin.activities.destroy');
+    Route::get('admin/activities/status/toggle/{id}', [ActivitiesController::class, 'toggleStatus'])->name('admin.activities.toggle.status');
 });
 ### Protected Route Admin Profile & Password Pages End
 
