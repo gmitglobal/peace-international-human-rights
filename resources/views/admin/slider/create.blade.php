@@ -150,7 +150,7 @@
                             <!-- Submit -->
                             <div class="text-end">
                                 <button type="submit" class="btn btn-sm btn-success">
-                                    <i class="fas fa-check-circle me-1"></i> Add Category
+                                    <i class="fas fa-check-circle me-1"></i> Add Slider
                                 </button>
                             </div>
                         </form>

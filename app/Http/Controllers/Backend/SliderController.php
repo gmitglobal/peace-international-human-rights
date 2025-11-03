@@ -77,7 +77,7 @@ class SliderController extends Controller
             'button2_link'     => $request->button2_link,
             'background_image' => $backgroundPath,
             'logo_image'       => $logoPath,
-            'is_active'        => true,
+            'status'           => 1,
             'sort_order'       => 0,
         ]);
 

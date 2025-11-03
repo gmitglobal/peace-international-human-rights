@@ -33,7 +33,7 @@ return new class extends Migration
             $table->string('button2_link')->nullable();
 
             // ⚙️ Optional settings
-            $table->boolean('is_active')->default(true);
+            $table->integer('status')->default(1);
             $table->integer('sort_order')->default(0);
 
             $table->timestamps();

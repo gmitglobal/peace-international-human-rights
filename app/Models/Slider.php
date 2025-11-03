@@ -18,7 +18,7 @@ class Slider extends Model
         'button1_link',
         'button2_text',
         'button2_link',
-        'is_active',
+        'status',
         'sort_order',
     ];
 }
