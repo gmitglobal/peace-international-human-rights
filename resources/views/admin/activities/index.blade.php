@@ -106,7 +106,7 @@
                                 </tr>
                             @empty
                                 <tr class="text-center">
-                                    <td colspan="5">No sliders found.</td>
+                                    <td colspan="5">No activities found.</td>
                                 </tr>
                             @endforelse
                         </tbody>

@@ -44,69 +44,6 @@
                         </div>
                     </div>
                 @endforeach
-
-
-
-                {{-- <!-- Slide 2 -->
-                <div class="carousel-item"
-                    style="background-image: url('{{ asset('clients/images/sliders/slider-1.png') }}');">
-                    <div class="overlay"></div>
-                    <div class="carousel-caption d-flex flex-column justify-content-center align-items-center">
-                        <img src="{{ asset('clients/images/logo/logo.png') }}" alt="Peace Logo" class="hero-logo mb-4"
-                            height="120">
-                        <h1 class="fw-bold text-warning mb-3 animate__animated animate__fadeInDown">
-                            Building Bridges of Peace Worldwide
-                        </h1>
-                        <p class="lead text-white mb-4 animate__animated animate__fadeInUp">
-                            We believe in dignity, respect, and equality for all.
-                        </p>
-                        <div class="d-flex justify-content-center gap-3">
-                            <a href="#projects" class="btn btn-primary btn-lg">Our Projects</a>
-                            <a href="#contact" class="btn btn-outline-brand btn-lg">Get Involved</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide 3 -->
-                <div class="carousel-item"
-                    style="background-image: url('{{ asset('clients/images/sliders/slider-2.png') }}');">
-                    <div class="overlay"></div>
-                    <div class="carousel-caption d-flex flex-column justify-content-center align-items-center">
-                        <img src="{{ asset('clients/images/logo/logo.png') }}" alt="Peace Logo" class="hero-logo mb-4"
-                            height="120">
-                        <h1 class="fw-bold text-warning mb-3 animate__animated animate__fadeInDown">
-                            Together for a Better Future
-                        </h1>
-                        <p class="lead text-white mb-4 animate__animated animate__fadeInUp">
-                            Join our mission to protect human rights around the globe.
-                        </p>
-                        <div class="d-flex justify-content-center gap-3">
-                            <a href="#donate" class="btn btn-primary btn-lg">Donate Now</a>
-                            <a href="#about" class="btn btn-outline-brand btn-lg">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slider 4 -->
-                <div class="carousel-item"
-                    style="background-image: url('{{ asset('clients/images/sliders/slider-3.png') }}');">
-                    <div class="overlay"></div>
-                    <div class="carousel-caption d-flex flex-column justify-content-center align-items-center">
-                        <img src="{{ asset('clients/images/logo/logo.png') }}" alt="Peace Logo" class="hero-logo mb-4"
-                            height="120">
-                        <h1 class="fw-bold text-warning mb-3 animate__animated animate__fadeInDown">
-                            Together for a Better Future
-                        </h1>
-                        <p class="lead text-white mb-4 animate__animated animate__fadeInUp">
-                            Join our mission to protect human rights around the globe.
-                        </p>
-                        <div class="d-flex justify-content-center gap-3">
-                            <a href="#donate" class="btn btn-primary btn-lg">Donate Now</a>
-                            <a href="#about" class="btn btn-outline-brand btn-lg">Learn More</a>
-                        </div>
-                    </div>
-                </div> --}}
-
             </div>
 
             <!-- Carousel Controls -->
@@ -126,51 +63,38 @@
 
             <div class="row justify-content-center">
                 <!-- Post Card 1 -->
-                <div class="col-md-6 mb-4">
-                    <div class="fb-media-card p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <img src="{{ asset('clients/images/avatars/avatar-1.png') }} " alt="Profile"
-                                class="rounded-circle me-3" width="50" height="50">
-                            <div>
-                                <h6 class="mb-0 fw-semibold text-brand-deep">Peace IHR Official</h6>
-                                <small class="text-muted">October 19, 2025</small>
+                @foreach ($activites as $key => $activite)
+                    @php
+                        $date = $activite->date;
+                        $formattedDate = \Carbon\Carbon::parse($date)->format('F d, Y');
+                    @endphp
+                    <div class="col-md-6 mb-4">
+                        <div class="fb-media-card p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="{{ !empty($activite->photo) ? asset($activite['user']['photo']) : asset('no_image.jpg') }}"
+                                    alt="Profile Image" class="rounded-circle me-3" width="50" height="50">
+                                <div>
+                                    <h6 class="mb-0 fw-semibold text-brand-deep">{{ $activite['user']['name'] }}</h6>
+                                    <small class="text-muted">{{ $formattedDate }}</small>
+                                </div>
                             </div>
-                        </div>
-                        <p class="text-muted mb-3">
-                            Our volunteers organized a community workshop to promote peace education and human rights
-                            awareness in Dhaka.
-                        </p>
-                        <img src="{{ asset('clients/images/activity/activity-1.png') }}" alt="Event"
-                            class="img-fluid rounded-3 mb-3">
-                        <div class="text-end">
-                            <small class="text-muted"><i class="bi bi-heart-fill text-danger me-1"></i> 248
-                                Likes</small>
-                        </div>
-                    </div>
-                </div>
+                            <p class="text-muted mb-3">{{ $activite->paragraph }}</p>
+                            @if (!empty($activite->post_image))
+                                <img src="{{ asset($activite->post_image) }}" alt="Event"
+                                    class="img-fluid rounded-3 mb-3">
+                            @endif
 
-                <!-- Post Card 2 -->
-                <div class="col-md-6 mb-4">
-                    <div class="fb-media-card p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <img src="{{ asset('clients/images/avatars/avatar-2.png') }}" alt="Profile"
-                                class="rounded-circle me-3" width="50" height="50">
-                            <div>
-                                <h6 class="mb-0 fw-semibold text-brand-deep">Peace IHR Official</h6>
-                                <small class="text-muted">October 12, 2025</small>
+                            <div class="text-end">
+                                <small class="text-muted"><i class="bi bi-heart-fill text-danger me-1"></i> 248
+                                    Likes</small>
                             </div>
                         </div>
-                        <p class="text-muted mb-3">
-                            Honored to collaborate with local NGOs in Chattogram for a women’s rights campaign.
-                            Together, we make change possible!
-                        </p>
-                        <img src="{{ asset('clients/images/activity/activity-2.png') }}" alt="Campaign"
-                            class="img-fluid rounded-3 mb-3">
-                        <div class="text-end">
-                            <small class="text-muted"><i class="bi bi-heart-fill text-danger me-1"></i> 312
-                                Likes</small>
-                        </div>
                     </div>
+                @endforeach
+            </div>
+            <div class="row">
+                <div class="col-lg-12 mt-3 d-flex justify-content-center">
+                    <button class="btn btn-primary">More</button>
                 </div>
             </div>
         </div>
@@ -371,42 +295,42 @@
 
     <!-- Projects Section -->
     <!-- <section id="projects" class="py-5">
-                                                        <div class="container">
-                                                            <h2 class="text-center fw-bold text-brand-deep mb-5">Our Projects</h2>
-                                                            <div class="row g-4">
-                                                                <div class="col-md-4">
-                                                                    <div class="card h-100 text-center p-3">
-                                                                        <img src="images/education.jpg" class="card-img-top rounded-3" alt="Education">
-                                                                        <div class="card-body">
-                                                                            <h5 class="fw-bold text-brand-deep">Education for All</h5>
-                                                                            <p class="text-muted">We empower youth through education programs and rights awareness
-                                                                                workshops.</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <div class="card h-100 text-center p-3">
-                                                                        <img src="images/justice.jpg" class="card-img-top rounded-3" alt="Justice">
-                                                                        <div class="card-body">
-                                                                            <h5 class="fw-bold text-brand-deep">Justice Initiatives</h5>
-                                                                            <p class="text-muted">Providing legal aid and advocacy for vulnerable and oppressed
-                                                                                communities.</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <div class="card h-100 text-center p-3">
-                                                                        <img src="images/peace.jpg" class="card-img-top rounded-3" alt="Peace">
-                                                                        <div class="card-body">
-                                                                            <h5 class="fw-bold text-brand-deep">Peace Missions</h5>
-                                                                            <p class="text-muted">Promoting intercultural dialogue and peaceful conflict resolution
-                                                                                initiatives.</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </section> -->
+                                                                                                            <div class="container">
+                                                                                                                <h2 class="text-center fw-bold text-brand-deep mb-5">Our Projects</h2>
+                                                                                                                <div class="row g-4">
+                                                                                                                    <div class="col-md-4">
+                                                                                                                        <div class="card h-100 text-center p-3">
+                                                                                                                            <img src="images/education.jpg" class="card-img-top rounded-3" alt="Education">
+                                                                                                                            <div class="card-body">
+                                                                                                                                <h5 class="fw-bold text-brand-deep">Education for All</h5>
+                                                                                                                                <p class="text-muted">We empower youth through education programs and rights awareness
+                                                                                                                                    workshops.</p>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-md-4">
+                                                                                                                        <div class="card h-100 text-center p-3">
+                                                                                                                            <img src="images/justice.jpg" class="card-img-top rounded-3" alt="Justice">
+                                                                                                                            <div class="card-body">
+                                                                                                                                <h5 class="fw-bold text-brand-deep">Justice Initiatives</h5>
+                                                                                                                                <p class="text-muted">Providing legal aid and advocacy for vulnerable and oppressed
+                                                                                                                                    communities.</p>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-md-4">
+                                                                                                                        <div class="card h-100 text-center p-3">
+                                                                                                                            <img src="images/peace.jpg" class="card-img-top rounded-3" alt="Peace">
+                                                                                                                            <div class="card-body">
+                                                                                                                                <h5 class="fw-bold text-brand-deep">Peace Missions</h5>
+                                                                                                                                <p class="text-muted">Promoting intercultural dialogue and peaceful conflict resolution
+                                                                                                                                    initiatives.</p>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </section> -->
 
     <!-- Contact Section -->
     <section id="contact" class="py-5 bg-light">

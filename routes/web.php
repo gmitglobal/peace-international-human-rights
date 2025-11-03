@@ -1,12 +1,15 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Models\Activites;
 use App\Models\Slider;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $sliders = Slider::where('status', '=', 1)->get();
-    return view('clients.home.index', compact('sliders'));
+    $activites = Activites::with('user')->where('status', '=', 1)->get();
+    
+    return view('clients.home.index', compact('sliders', 'activites'));
 })->name('home');
 
 
