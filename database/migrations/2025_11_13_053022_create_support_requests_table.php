@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('voterid');
             $table->text('address');
             $table->text('problem');
+            $table->integer('division')->nullable();
+            $table->integer('district')->nullable();
+            $table->integer('thana')->nullable();
             $table->string('post_image')->nullable();
             $table->integer('status')->default(0);
             $table->timestamps();

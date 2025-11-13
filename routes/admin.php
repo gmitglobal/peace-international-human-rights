@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\ReferListController;
 use App\Http\Controllers\Backend\ShopController;
 use App\Http\Controllers\Backend\SiteSettingController;
 use App\Http\Controllers\Backend\SliderController;
+use App\Http\Controllers\Backend\SupportRequestController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -119,7 +120,15 @@ Route::get('admin/role/status/toggle/{id}', [MyRoleController::class, 'toggleSta
 Route::post('admin/role/{id}/update-role', [MyRoleController::class, 'updateRole'])->name('admin.users.updateRole');
 
 
-
+## Support Request
+Route::get('admin/support/request/index',  [SupportRequestController::class, 'index'])->name('admin.support.request.index');
+Route::get('admin/support/request/create', [SupportRequestController::class, 'create'])->name('admin.support.request.create');
+Route::get('admin/support/request/edit/{id}', [SupportRequestController::class, 'edit'])->name('admin.support.request.edit');
+Route::post('admin/support/request/store', [SupportRequestController::class, 'store'])->name('admin.support.request.store');
+Route::post('admin/support/request/update/{id}', [SupportRequestController::class, 'update'])->name('admin.support.request.update');
+Route::post('admin/support/request/destroy/{id}', [SupportRequestController::class, 'destroy'])->name('admin.support.request.destroy');
+Route::get('admin/support/request/status/toggle/{id}', [SupportRequestController::class, 'toggleStatus'])->name('admin.support.request.toggle.status');
+Route::post('admin/support/request/{id}/update-role', [SupportRequestController::class, 'updateRole'])->name('admin.support.users.updateRole');
 
 
 
@@ -152,3 +161,4 @@ Route::post('/settings/update', [SiteSettingController::class, 'update'])->name(
 
 
 Route::get('/locations/{type}/{id?}', [LocationController::class, 'getData']);
+

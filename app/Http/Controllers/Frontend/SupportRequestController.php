@@ -24,6 +24,9 @@ class SupportRequestController extends Controller
             'voterid'    => 'required|string|max:50',
             'address'    => 'required|string',
             'problem'    => 'required|string',
+            'division'   => 'required|string',
+            'district'   => 'required|string',
+            'thana'      => 'required|string',
             'post_image' => 'nullable|image|mimes:jpg,jpeg,png,svg,webp|max:2048',
         ]);
 
@@ -32,8 +35,8 @@ class SupportRequestController extends Controller
         if ($request->hasFile('post_image')) {
             $file = $request->file('post_image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('uploads/posts'), $filename);
-            $imagePath = 'uploads/posts/' . $filename;
+            $file->move(public_path('uploads/support_request'), $filename);
+            $imagePath = 'uploads/support_request/' . $filename;
         }
 
         // ✅ Store in Database (example model)
@@ -46,6 +49,9 @@ class SupportRequestController extends Controller
             'voterid'    => $validatedData['voterid'],
             'address'    => $validatedData['address'],
             'problem'    => $validatedData['problem'],
+            'division'   => $validatedData['division'],
+            'district'   => $validatedData['district'],
+            'thana'      => $validatedData['thana'],
             'post_image' => $imagePath,
         ]);
 

@@ -13,6 +13,9 @@ class SupportRequest extends Model
         'voterid',
         'address',
         'problem',
+        'division',
+        'district',
+        'thana',
         'post_image'
     ];
 }

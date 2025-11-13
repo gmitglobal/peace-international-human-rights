@@ -106,14 +106,14 @@
                         <form action="{{ route('support.request.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
-                                <div class="col">
+                                <div class="col-lg-6 col-sm-12">
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Name</label>
                                         <input type="text" class="form-control" id="name" name="name"
                                             placeholder="Your Name" required>
                                     </div>
                                 </div>
-                                <div class="col">
+                                <div class="col-lg-6 col-sm-12">
                                     <div class="mb-3">
                                         <label for="mobile" class="form-label">Mobile</label>
                                         <input type="text" class="form-control" id="mobile" name="mobile"
@@ -123,14 +123,14 @@
                             </div>
 
                             <div class="row">
-                                <div class="col">
+                                <div class="col-lg-6 col-sm-12">
                                     <div class="mb-3">
                                         <label for="whatsApp" class="form-label">WhatsApp</label>
                                         <input type="text" class="form-control" id="whatsApp" name="whatsApp"
                                             placeholder="Your WhatsApp">
                                     </div>
                                 </div>
-                                <div class="col">
+                                <div class="col-lg-6 col-sm-12">
                                     <div class="mb-3">
                                         <label for="voterid" class="form-label">Voter ID</label>
                                         <input type="text" class="form-control" id="voterid" name="voterid"
@@ -148,12 +148,42 @@
                                 <textarea class="form-control" id="problem" name="problem" rows="5" placeholder="Your Problem" required></textarea>
                             </div>
 
+                            <div class="row mb-4">
+                                <div class="col-lg-4 col-sm-12">
+                                    <label for="divisionSelect" class="col-form-label">Select Division</label>
+                                    <div class="col-sm-12">
+                                        <select name="division" id="divisionSelect" class="form-select"
+                                            aria-label="Division select" required>
+                                            <option selected disabled>-- Select Division --</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-12">
+                                    <label for="districtSelect" class="col-form-label">Select District</label>
+                                    <div class="col-sm-12">
+                                        <select name="district" id="districtSelect" class="form-select"
+                                            aria-label="District select" required>
+                                            <option selected disabled>-- Select District --</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-12">
+                                    <label for="thanaSelect" class="col-form-label">Select Thana</label>
+                                    <div class="col-sm-12">
+                                        <select name="thana" id="thanaSelect" class="form-select"
+                                            aria-label="Thana select" required>
+                                            <option selected disabled>-- Select Thana --</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
 
                             <!-- Post Image -->
                             <div class="mb-3">
                                 <label for="post_image" class="form-label">Post Image</label>
 
-                                <input type="file" name="post_image" id="post_image" class="form-control form-control-sm"
+                                <input type="file" name="post_image" id="post_image"
+                                    class="form-control form-control-sm"
                                     accept="image/png, image/jpg, image/jpeg, image/svg+xml, image/webp"
                                     onchange="showPreview(event)">
 
@@ -226,6 +256,87 @@
 
                 // If valid
                 fileError.style.display = 'none';
+            }
+        });
+    </script>
+
+    <!-- ✅ Axios CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- ✅ Values from backend -->
+    <script>
+        const selectedDivisionId = "";
+        const selectedDistrictId = "";
+        const selectedThanaId = "";
+
+        document.addEventListener('DOMContentLoaded', async function() {
+            const divisionSelect = document.getElementById('divisionSelect');
+            const districtSelect = document.getElementById('districtSelect');
+            const thanaSelect = document.getElementById('thanaSelect');
+
+            try {
+                const divRes = await axios.get('/locations/divisions');
+                const divisions = divRes.data;
+
+                divisions.forEach(div => {
+                    const option = document.createElement('option');
+                    option.value = div.id;
+                    option.textContent = div.name;
+                    if (parseInt(selectedDivisionId) === parseInt(div.id)) option.selected = true;
+                    divisionSelect.appendChild(option);
+                });
+
+                if (selectedDivisionId) await loadDistricts(selectedDivisionId);
+            } catch (error) {
+                console.error('Error fetching divisions:', error);
+            }
+
+            divisionSelect.addEventListener('change', function() {
+                loadDistricts(this.value);
+            });
+
+            async function loadDistricts(divisionId) {
+                districtSelect.innerHTML = '<option selected disabled>-- Select District --</option>';
+                thanaSelect.innerHTML = '<option selected disabled>-- Select Thana --</option>';
+                try {
+                    const distRes = await axios.get(`/locations/districts/${divisionId}`);
+                    const districts = distRes.data;
+
+                    districts.forEach(dist => {
+                        const option = document.createElement('option');
+                        option.value = dist.id;
+                        option.textContent = dist.name;
+                        if (parseInt(selectedDistrictId) === parseInt(dist.id)) option.selected =
+                            true;
+                        districtSelect.appendChild(option);
+                    });
+
+                    if (selectedDistrictId) await loadThanas(selectedDistrictId);
+                } catch (error) {
+                    console.error('Error fetching districts:', error);
+                }
+            }
+
+            districtSelect.addEventListener('change', function() {
+                loadThanas(this.value);
+            });
+
+            async function loadThanas(districtId) {
+                thanaSelect.innerHTML = '<option selected disabled>-- Select Thana --</option>';
+                try {
+                    const thanaRes = await axios.get(`/locations/thanas/${districtId}`);
+                    const thanas = thanaRes.data;
+                    thanas.forEach(thana => {
+                        const option = document.createElement('option');
+                        option.value = thana.id;
+                        option.textContent = thana.name;
+                        if (parseInt(selectedThanaId) === parseInt(thana.id)) option.selected =
+                            true;
+                        thanaSelect.appendChild(option);
+                    });
+                } catch (error) {
+                    console.error('Error fetching thanas:', error);
+                }
             }
         });
     </script>

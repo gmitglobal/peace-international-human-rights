@@ -44,7 +44,7 @@
         </li>
 
         <li>
-            <a href="{{ route('admin.activities.index') }}">
+            <a href="{{ route('admin.support.request.index') }}">
                 <div class="parent-icon"><i class='bx bx-cookie'></i></div>
                 <div class="menu-title">Support Request</div>
             </a>

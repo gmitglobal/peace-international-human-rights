@@ -29,7 +29,7 @@
                         class="rounded-circle img-thumbnail mb-3" width="110">
                     <h4>{{ $data->name }}</h4>
                     <p class="text-muted mb-1">{{ $data->email }}</p>
-                    <p class="text-muted">{{ $data->role }}</p>
+                    <p class="text-muted">{{ $data->role->name }}</p>
                 </div>
             </div>
         </div>
@@ -341,18 +341,15 @@
 
     <!-- ✅ Values from backend -->
     <script>
-        const selectedDivisionId = {{ $data->division ?? 'null' }};
-        const selectedDistrictId = {{ $data->district ?? 'null' }};
-        const selectedThanaId = {{ $data->thana ?? 'null' }};
-    </script>
+        const selectedDivisionId = @json($data->division);
+        const selectedDistrictId = @json($data->district);
+        const selectedThanaId = @json($data->thana);
 
-    <script>
         document.addEventListener('DOMContentLoaded', async function() {
             const divisionSelect = document.getElementById('divisionSelect');
             const districtSelect = document.getElementById('districtSelect');
             const thanaSelect = document.getElementById('thanaSelect');
 
-            // ✅ Step 1: Load Divisions
             try {
                 const divRes = await axios.get('/locations/divisions');
                 const divisions = divRes.data;
@@ -361,17 +358,15 @@
                     const option = document.createElement('option');
                     option.value = div.id;
                     option.textContent = div.name;
-                    if (selectedDivisionId === div.id) option.selected = true;
+                    if (parseInt(selectedDivisionId) === parseInt(div.id)) option.selected = true;
                     divisionSelect.appendChild(option);
                 });
 
-                // If editing → load districts
                 if (selectedDivisionId) await loadDistricts(selectedDivisionId);
             } catch (error) {
                 console.error('Error fetching divisions:', error);
             }
 
-            // ✅ Step 2: Load Districts when Division changes
             divisionSelect.addEventListener('change', function() {
                 loadDistricts(this.value);
             });
@@ -379,7 +374,6 @@
             async function loadDistricts(divisionId) {
                 districtSelect.innerHTML = '<option selected disabled>-- Select District --</option>';
                 thanaSelect.innerHTML = '<option selected disabled>-- Select Thana --</option>';
-
                 try {
                     const distRes = await axios.get(`/locations/districts/${divisionId}`);
                     const districts = distRes.data;
@@ -388,7 +382,8 @@
                         const option = document.createElement('option');
                         option.value = dist.id;
                         option.textContent = dist.name;
-                        if (selectedDistrictId === dist.id) option.selected = true;
+                        if (parseInt(selectedDistrictId) === parseInt(dist.id)) option.selected =
+                            true;
                         districtSelect.appendChild(option);
                     });
 
@@ -398,23 +393,21 @@
                 }
             }
 
-            // ✅ Step 3: Load Thanas when District changes
             districtSelect.addEventListener('change', function() {
                 loadThanas(this.value);
             });
 
             async function loadThanas(districtId) {
                 thanaSelect.innerHTML = '<option selected disabled>-- Select Thana --</option>';
-
                 try {
                     const thanaRes = await axios.get(`/locations/thanas/${districtId}`);
                     const thanas = thanaRes.data;
-
                     thanas.forEach(thana => {
                         const option = document.createElement('option');
                         option.value = thana.id;
                         option.textContent = thana.name;
-                        if (selectedThanaId === thana.id) option.selected = true;
+                        if (parseInt(selectedThanaId) === parseInt(thana.id)) option.selected =
+                        true;
                         thanaSelect.appendChild(option);
                     });
                 } catch (error) {
@@ -423,5 +416,4 @@
             }
         });
     </script>
-
 @endsection
