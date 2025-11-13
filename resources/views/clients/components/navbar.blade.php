@@ -11,6 +11,7 @@
                     <li class="nav-item"><a class="nav-link active" href="{{ route('home') }}">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">Activities</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('support.request.index') }}">Support Request</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
 
                     @if (empty(Auth::user()->id))

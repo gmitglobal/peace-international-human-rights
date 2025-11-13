@@ -6,6 +6,9 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\LocationController;
 use App\Http\Controllers\Backend\MemberController;
+use App\Http\Controllers\Backend\MyRoleController;
+use App\Http\Controllers\Backend\ReferController;
+use App\Http\Controllers\Backend\ReferListController;
 use App\Http\Controllers\Backend\ShopController;
 use App\Http\Controllers\Backend\SiteSettingController;
 use App\Http\Controllers\Backend\SliderController;
@@ -36,11 +39,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('admin/category/index',  [CategoryController::class, 'index'])->name('admin.category.index');
     Route::get('admin/category/create', [CategoryController::class, 'create'])->name('admin.category.create');
     Route::get('admin/category/edit/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');
-
     Route::post('admin/category/store', [CategoryController::class, 'store'])->name('admin.category.store');
     Route::post('admin/category/update/{id}', [CategoryController::class, 'update'])->name('admin.category.update');
     Route::post('admin/category/destroy/{id}', [CategoryController::class, 'destroy'])->name('admin.category.destroy');
-
     Route::get('admin/category/status/toggle/{id}', [CategoryController::class, 'toggleStatus'])->name('admin.category.toggle.status');
 
 
@@ -48,8 +49,11 @@ Route::middleware(['auth'])->group(function () {
 
 
 
-
-
+    ## Refer IDs
+    // Route::get('admin/refer/list/{id}', [ReferController::class, 'index'])->name('admin.refer.list');
+    // Route::get('admin/refer/details/{id}', [ReferController::class, 'details'])->name('admin.refer.details');
+    // Route::get('admin/refer/status/{id}', [ReferController::class, 'toggleStatus'])->name('admin.refer.status');
+    // Route::post('admin/refer/destroy/{id}', [ReferController::class, 'destroy'])->name('admin.refer.destroy');
 
 
 
@@ -104,8 +108,15 @@ Route::get('admin/shop/status/toggle/{id}', [ShopController::class, 'toggleStatu
 
 
 
-
-
+## Role
+Route::get('admin/role/index',  [MyRoleController::class, 'index'])->name('admin.role.index');
+Route::get('admin/role/create', [MyRoleController::class, 'create'])->name('admin.role.create');
+Route::get('admin/role/edit/{id}', [MyRoleController::class, 'edit'])->name('admin.role.edit');
+Route::post('admin/role/store', [MyRoleController::class, 'store'])->name('admin.role.store');
+Route::post('admin/role/update/{id}', [MyRoleController::class, 'update'])->name('admin.role.update');
+Route::post('admin/role/destroy/{id}', [MyRoleController::class, 'destroy'])->name('admin.role.destroy');
+Route::get('admin/role/status/toggle/{id}', [MyRoleController::class, 'toggleStatus'])->name('admin.role.toggle.status');
+Route::post('admin/role/{id}/update-role', [MyRoleController::class, 'updateRole'])->name('admin.users.updateRole');
 
 
 

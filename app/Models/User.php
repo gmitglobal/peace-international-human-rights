@@ -19,6 +19,8 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'refer_id',
+        'refered_by',
         'email',
         'password',
         'phone',
@@ -96,5 +98,16 @@ class User extends Authenticatable
     public function activities()
     {
         return $this->hasMany(Activites::class);
+    }
+
+
+    // public function referTable()
+    // {
+    //     return $this->belongsTo(ReferTable::class, 'refered_by', 'refer_id');
+    // }
+
+    public function role()
+    {
+        return $this->belongsTo(MyRole::class, 'role_id');
     }
 }

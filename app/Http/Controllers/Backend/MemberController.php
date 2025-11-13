@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\MyRole;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -36,8 +37,10 @@ class MemberController extends Controller
         // ✅ Paginate results
         $items = $query->paginate(8);
 
+        $myRoles = MyRole::where('status', '=', 1)->get(['id','name']);
+
         // Return to view
-        return view('admin.member-list.index', compact('items', 'search'));
+        return view('admin.member-list.index', compact('items', 'search', 'myRoles'));
     } ## End Mehtod
 
 
@@ -50,12 +53,12 @@ class MemberController extends Controller
     public function toggleStatus($id)
     {
         $admin = User::findOrFail($id);
-        $admin->status = $admin->status == 1 ? 0 : 1;
+        // $admin->refer_id = ;
+        $admin->status   = $admin->status == 1 ? 0 : 1;
         $admin->save();
 
         return redirect()->back()->with('success', 'Status updated successfully.');
     } ## End Mehtod
-
 
     /* Delete a category and its images */
     public function destroy(Request $request)
@@ -69,7 +72,6 @@ class MemberController extends Controller
 
         return redirect()->route('admin.member-list.index')->with('success', 'Deleted successfully.');
     }
-    
 
     /**
      * Delete image from storage if not default.

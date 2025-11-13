@@ -12,8 +12,10 @@ return new class extends Migration {
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            
+
             $table->string('name');
+            $table->string('refer_id')->nullable();
+            $table->string('refered_by')->nullable();
             $table->string('email')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -35,7 +37,8 @@ return new class extends Migration {
             $table->string('photo')->nullable();
             $table->string('nid')->nullable();
             $table->string('signature')->nullable();
-            $table->string('role')->default('member');
+            $table->string('count')->default(0);
+            $table->integer('role_id')->nullable();
             $table->string('status')->default(0);
 
             $table->rememberToken();

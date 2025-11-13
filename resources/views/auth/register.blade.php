@@ -150,6 +150,15 @@
                                                 <x-input-error :messages="$errors->get('phone')" class="mt-2 text-danger" />
                                             </div>
 
+                                            <div class="col-12">
+                                                <label for="inputReferId" class="form-label">Reference ID</label>
+
+                                                <input type="referred_by" name="referred_by" :value="old('referred_by')"
+                                                    class="form-control" id="inputReferId"
+                                                    placeholder="Reference ID">
+                                                <x-input-error :messages="$errors->get('referred_by')" class="mt-2 text-danger" />
+                                            </div>
+
 
                                             <div class="col-12">
                                                 <label for="inputEmailAddress" class="form-label">Email

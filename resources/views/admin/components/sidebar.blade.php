@@ -21,28 +21,42 @@
             </a>
         </li>
 
-        @if (Auth::user()->role == 'admin')
-            <li>
-                <a href="{{ route('admin.member.list') }}">
-                    <div class="parent-icon"><i class='bx bx-cookie'></i></div>
-                    <div class="menu-title">Member List</div>
-                </a>
-            </li>
+        {{-- @if (Auth::user()->role == 'admin') --}}
+        <li>
+            <a href="{{ route('admin.member.list') }}">
+                <div class="parent-icon"><i class='bx bx-cookie'></i></div>
+                <div class="menu-title">Member List</div>
+            </a>
+        </li>
 
-            <li>
-                <a href="{{ route('admin.slider.index') }}">
-                    <div class="parent-icon"><i class='bx bx-cookie'></i></div>
-                    <div class="menu-title">Manage Slider</div>
-                </a>
-            </li>
+        <li>
+            <a href="{{ route('admin.slider.index') }}">
+                <div class="parent-icon"><i class='bx bx-cookie'></i></div>
+                <div class="menu-title">Manage Slider</div>
+            </a>
+        </li>
 
-            <li>
-                <a href="{{ route('admin.activities.index') }}">
-                    <div class="parent-icon"><i class='bx bx-cookie'></i></div>
-                    <div class="menu-title">Manage Activities</div>
-                </a>
-            </li>
-        @endif
+        <li>
+            <a href="{{ route('admin.activities.index') }}">
+                <div class="parent-icon"><i class='bx bx-cookie'></i></div>
+                <div class="menu-title">Manage Activities</div>
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('admin.activities.index') }}">
+                <div class="parent-icon"><i class='bx bx-cookie'></i></div>
+                <div class="menu-title">Support Request</div>
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('admin.role.index') }}">
+                <div class="parent-icon"><i class='bx bx-cookie'></i></div>
+                <div class="menu-title">Manage Roles</div>
+            </a>
+        </li>
+        {{-- @endif --}}
 
         <hr>
         <li>
