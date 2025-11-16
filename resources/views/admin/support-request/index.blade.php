@@ -4,9 +4,9 @@
         <!-- Page Header -->
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h4 class="mb-0">Support Request Management</h4>
-            <a href="{{ route('admin.support.request.create') }}" class="btn btn-sm btn-dark">
+            {{-- <a href="{{ route('admin.support.request.create') }}" class="btn btn-sm btn-dark">
                 <i class="fas fa-plus-circle me-1"></i> Add Support Request
-            </a>
+            </a> --}}
         </div>
 
         <!-- Search -->
@@ -44,6 +44,7 @@
                                 <th class="text-start">WhatsApp</th>
                                 <th class="text-start">Voter ID</th>
                                 <th class="text-start">Address</th>
+                                <th class="text-start">Title</th>
                                 <th class="text-start">Problem</th>
                                 <th>Actions</th>
                             </tr>
@@ -58,9 +59,10 @@
                                     </td>
                                     <td>{{ $activity->name }}</td>
                                     <td>{{ $activity->mobile }}</td>
-                                    <td>{{ $activity->whatsApp }}</td>
+                                    <td>{{ $activity->whatsapp }}</td>
                                     <td>{{ $activity->voterid }}</td>
                                     <td>{{ $activity->address }}</td>
+                                    <td>{{ $activity->title }}</td>
                                     <td>{{ $activity->problem }}</td>
                                     <td class="text-center">
                                         <a href="{{ route('admin.support.request.toggle.status', $activity->id) }}"
@@ -69,15 +71,15 @@
                                             <i class="fas fa-check-circle"></i>
                                         </a>
 
-                                        <a href="{{ route('admin.support.request.edit', $activity->id) }}"
+                                        {{-- <a href="{{ route('admin.support.request.edit', $activity->id) }}"
                                             class="btn btn-sm btn-info" title="Edit">
                                             <i class="fas fa-edit"></i>
-                                        </a>
+                                        </a> --}}
 
-                                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                                        {{-- <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
                                             data-bs-target="#deleteModal_{{ $activity->id }}">
                                             <i class="fas fa-trash-alt"></i>
-                                        </button>
+                                        </button> --}}
 
                                         <!-- Delete Modal -->
                                         <div class="modal fade" id="deleteModal_{{ $activity->id }}" tabindex="-1"
@@ -127,6 +129,7 @@
                                 <th class="text-start">WhatsApp</th>
                                 <th class="text-start">Voter ID</th>
                                 <th class="text-start">Address</th>
+                                <th class="text-start">Title</th>
                                 <th class="text-start">Problem</th>
                                 <th>Actions</th>
                             </tr>

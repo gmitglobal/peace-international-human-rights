@@ -143,6 +143,14 @@
                                 <label for="address" class="form-label">Address</label>
                                 <textarea class="form-control" id="address" name="address" rows="5" placeholder="Your Address" required></textarea>
                             </div>
+
+
+                            <div class="mb-3">
+                                <label for="title" class="form-label">Title</label>
+                                <input type="text" class="form-control" id="title" name="title"
+                                    placeholder="Title" required>
+                            </div>
+
                             <div class="mb-3">
                                 <label for="problem" class="form-label">Problem</label>
                                 <textarea class="form-control" id="problem" name="problem" rows="5" placeholder="Your Problem" required></textarea>

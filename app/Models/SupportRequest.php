@@ -12,6 +12,7 @@ class SupportRequest extends Model
         'whatsapp',
         'voterid',
         'address',
+        'title',
         'problem',
         'division',
         'district',

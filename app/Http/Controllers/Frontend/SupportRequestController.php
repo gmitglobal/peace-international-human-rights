@@ -23,11 +23,12 @@ class SupportRequestController extends Controller
             'whatsApp'   => 'nullable|string|max:20',
             'voterid'    => 'required|string|max:50',
             'address'    => 'required|string',
+            'title'      => 'required|string',
             'problem'    => 'required|string',
             'division'   => 'required|string',
             'district'   => 'required|string',
             'thana'      => 'required|string',
-            'post_image' => 'nullable|image|mimes:jpg,jpeg,png,svg,webp|max:2048',
+            'post_image' => 'nullable|image|mimes:jpg,jpeg,png,svg,webp|max:1048576',
         ]);
 
         // ✅ Image Upload Handling
@@ -48,6 +49,7 @@ class SupportRequestController extends Controller
             'whatsapp'   => $validatedData['whatsApp'],
             'voterid'    => $validatedData['voterid'],
             'address'    => $validatedData['address'],
+            'title'      => $validatedData['title'],
             'problem'    => $validatedData['problem'],
             'division'   => $validatedData['division'],
             'district'   => $validatedData['district'],

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('whatsapp')->nullable();
             $table->string('voterid');
             $table->text('address');
+            $table->string('title');
             $table->text('problem');
             $table->integer('division')->nullable();
             $table->integer('district')->nullable();
