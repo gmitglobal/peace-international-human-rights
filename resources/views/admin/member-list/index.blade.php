@@ -90,12 +90,16 @@
                                                     </div>
                                                     <div class="modal-body">
 
-                                                        <form action="">
-                                                            <select class="form-select form-select-sm"
-                                                                aria-label=".form-select-sm example">
-                                                                <option>Select Role</option>
+
+
+                                                        <form action="{{ route('admin.member.changeRole', $item->id) }}"
+                                                            method="POST">
+                                                            @csrf
+
+                                                            <select class="form-select form-select-sm" name="role_id">
+                                                                <option value="">Select Role</option>
                                                                 @foreach ($myRoles as $myRole)
-                                                                    <option name="my_role" value="{{ $myRole->id }}"
+                                                                    <option value="{{ $myRole->id }}"
                                                                         {{ $myRole->id == $item->role_id ? 'selected' : '' }}>
                                                                         {{ $myRole->name }}
                                                                     </option>
@@ -107,6 +111,11 @@
                                                                     type="submit">Change</button>
                                                             </div>
                                                         </form>
+
+
+
+
+
                                                         <hr>
                                                         <table class="table">
                                                             <thead>

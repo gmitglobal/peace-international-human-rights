@@ -70,7 +70,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('admin/member/details/{id}', [MemberController::class, 'details'])->name('admin.member.details');
     Route::get('admin/member/status/{id}', [MemberController::class, 'toggleStatus'])->name('admin.member.status');
     Route::post('admin/member/destroy/{id}', [MemberController::class, 'destroy'])->name('admin.member.destroy');
-
+    Route::post('admin/member/changeRole/{id}', [MemberController::class, 'changeRole'])->name('admin.member.changeRole');
 
     ## Slider
     Route::get('admin/slider/index',  [SliderController::class, 'index'])->name('admin.slider.index');

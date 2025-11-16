@@ -37,7 +37,7 @@ class MemberController extends Controller
         // ✅ Paginate results
         $items = $query->paginate(8);
 
-        $myRoles = MyRole::where('status', '=', 1)->get(['id','name']);
+        $myRoles = MyRole::where('status', '=', 1)->get(['id', 'name']);
 
         // Return to view
         return view('admin.member-list.index', compact('items', 'search', 'myRoles'));
@@ -82,5 +82,19 @@ class MemberController extends Controller
 
         $fullPath = public_path($imagePath);
         if (file_exists($fullPath)) @unlink($fullPath);
+    }
+
+
+    public function changeRole(Request $request, $id)
+    {
+        $request->validate([
+            'role_id' => 'required|integer',
+        ]);
+
+        $user = User::findOrFail($id);
+        $user->role_id = $request->role_id;
+        $user->save();
+
+        return back()->with('success', 'User role updated successfully!');
     }
 }
