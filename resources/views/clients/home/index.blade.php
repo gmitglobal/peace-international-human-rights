@@ -114,19 +114,32 @@
                 <div class="problems-slider d-flex overflow-auto pb-3">
 
                     <!-- Problem Card 1 -->
-                    <div class="problem-card me-3 flex-shrink-0">
-                        <div class="problem-body p-4">
-                            <h5 class="problem-title fw-semibold text-brand-deep">Water Crisis in Rural Chattogram</h5>
-                            <p class="problem-location text-muted mb-2"><i class="bi bi-geo-alt-fill"></i> Chattogram,
-                                Bangladesh</p>
-                            <p class="problem-desc text-muted">
-                                Thousands of families lack access to clean drinking water due to arsenic contamination.
-                            </p>
-                            <button class="btn btn-help mt-3">I want to help solve this problem</button>
-                        </div>
-                    </div>
 
-                    <!-- Problem Card 2 -->
+
+                    @foreach ($supportRequests as $supportRequest)
+                        <div class="problem-card me-3 flex-shrink-0">
+                            <div class="problem-body p-4">
+                                <h5 class="problem-title fw-semibold text-brand-deep">{{ $supportRequest->title }}</h5>
+                                <p class="problem-location text-muted mb-2">
+                                    <i class="bi bi-geo-alt-fill"></i>
+                                    {{ $supportRequest->thanaRelation->name ?? '' }},
+                                    {{ $supportRequest->districtRelation->name ?? '' }},
+                                    {{ $supportRequest->divisionRelation->name ?? '' }},
+                                    Bangladesh
+                                </p>
+                                <p class="problem-desc text-muted">
+                                    {{ $supportRequest->problem }}
+                                </p>
+                                <button class="btn btn-help mt-3">I want to help solve this problem</button>
+                            </div>
+                        </div>
+                    @endforeach
+
+
+
+
+
+                    {{-- <!-- Problem Card 2 -->
                     <div class="problem-card me-3 flex-shrink-0">
                         <div class="problem-body p-4">
                             <h5 class="problem-title fw-semibold text-brand-deep">Education Gap for Rohingya Children
@@ -166,7 +179,7 @@
                             </p>
                             <button class="btn btn-help mt-3">I want to help solve this problem</button>
                         </div>
-                    </div>
+                    </div> --}}
 
                 </div>
             </div>
@@ -295,42 +308,42 @@
 
     <!-- Projects Section -->
     <!-- <section id="projects" class="py-5">
-                                                                                                            <div class="container">
-                                                                                                                <h2 class="text-center fw-bold text-brand-deep mb-5">Our Projects</h2>
-                                                                                                                <div class="row g-4">
-                                                                                                                    <div class="col-md-4">
-                                                                                                                        <div class="card h-100 text-center p-3">
-                                                                                                                            <img src="images/education.jpg" class="card-img-top rounded-3" alt="Education">
-                                                                                                                            <div class="card-body">
-                                                                                                                                <h5 class="fw-bold text-brand-deep">Education for All</h5>
-                                                                                                                                <p class="text-muted">We empower youth through education programs and rights awareness
-                                                                                                                                    workshops.</p>
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                    <div class="col-md-4">
-                                                                                                                        <div class="card h-100 text-center p-3">
-                                                                                                                            <img src="images/justice.jpg" class="card-img-top rounded-3" alt="Justice">
-                                                                                                                            <div class="card-body">
-                                                                                                                                <h5 class="fw-bold text-brand-deep">Justice Initiatives</h5>
-                                                                                                                                <p class="text-muted">Providing legal aid and advocacy for vulnerable and oppressed
-                                                                                                                                    communities.</p>
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                    <div class="col-md-4">
-                                                                                                                        <div class="card h-100 text-center p-3">
-                                                                                                                            <img src="images/peace.jpg" class="card-img-top rounded-3" alt="Peace">
-                                                                                                                            <div class="card-body">
-                                                                                                                                <h5 class="fw-bold text-brand-deep">Peace Missions</h5>
-                                                                                                                                <p class="text-muted">Promoting intercultural dialogue and peaceful conflict resolution
-                                                                                                                                    initiatives.</p>
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                        </section> -->
+                                                                                                                                <div class="container">
+                                                                                                                                    <h2 class="text-center fw-bold text-brand-deep mb-5">Our Projects</h2>
+                                                                                                                                    <div class="row g-4">
+                                                                                                                                        <div class="col-md-4">
+                                                                                                                                            <div class="card h-100 text-center p-3">
+                                                                                                                                                <img src="images/education.jpg" class="card-img-top rounded-3" alt="Education">
+                                                                                                                                                <div class="card-body">
+                                                                                                                                                    <h5 class="fw-bold text-brand-deep">Education for All</h5>
+                                                                                                                                                    <p class="text-muted">We empower youth through education programs and rights awareness
+                                                                                                                                                        workshops.</p>
+                                                                                                                                                </div>
+                                                                                                                                            </div>
+                                                                                                                                        </div>
+                                                                                                                                        <div class="col-md-4">
+                                                                                                                                            <div class="card h-100 text-center p-3">
+                                                                                                                                                <img src="images/justice.jpg" class="card-img-top rounded-3" alt="Justice">
+                                                                                                                                                <div class="card-body">
+                                                                                                                                                    <h5 class="fw-bold text-brand-deep">Justice Initiatives</h5>
+                                                                                                                                                    <p class="text-muted">Providing legal aid and advocacy for vulnerable and oppressed
+                                                                                                                                                        communities.</p>
+                                                                                                                                                </div>
+                                                                                                                                            </div>
+                                                                                                                                        </div>
+                                                                                                                                        <div class="col-md-4">
+                                                                                                                                            <div class="card h-100 text-center p-3">
+                                                                                                                                                <img src="images/peace.jpg" class="card-img-top rounded-3" alt="Peace">
+                                                                                                                                                <div class="card-body">
+                                                                                                                                                    <h5 class="fw-bold text-brand-deep">Peace Missions</h5>
+                                                                                                                                                    <p class="text-muted">Promoting intercultural dialogue and peaceful conflict resolution
+                                                                                                                                                        initiatives.</p>
+                                                                                                                                                </div>
+                                                                                                                                            </div>
+                                                                                                                                        </div>
+                                                                                                                                    </div>
+                                                                                                                                </div>
+                                                                                                                            </section> -->
 
     <!-- Contact Section -->
     <section id="contact" class="py-5 bg-light">

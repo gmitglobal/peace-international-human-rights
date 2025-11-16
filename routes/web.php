@@ -3,13 +3,16 @@
 use App\Http\Controllers\ProfileController;
 use App\Models\Activites;
 use App\Models\Slider;
+use App\Models\SupportRequest;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    $sliders = Slider::where('status', '=', 1)->get();
+
+    $sliders   = Slider::where('status', '=', 1)->get();
     $activites = Activites::with('user')->where('status', '=', 1)->get();
-    
-    return view('clients.home.index', compact('sliders', 'activites'));
+    $supportRequests = SupportRequest::where('status', '=', 1)->get();
+
+    return view('clients.home.index', compact('sliders', 'activites', 'supportRequests'));
 })->name('home');
 
 
