@@ -4,11 +4,14 @@ use App\Http\Controllers\Backend\ActivitiesController;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\DonateController;
 use App\Http\Controllers\Backend\LocationController;
 use App\Http\Controllers\Backend\MemberController;
 use App\Http\Controllers\Backend\MyRoleController;
+use App\Http\Controllers\Backend\PaymentSettingController;
 use App\Http\Controllers\Backend\ReferController;
 use App\Http\Controllers\Backend\ReferListController;
+use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\ShopController;
 use App\Http\Controllers\Backend\SiteSettingController;
 use App\Http\Controllers\Backend\SliderController;
@@ -130,9 +133,20 @@ Route::post('admin/support/request/destroy/{id}', [SupportRequestController::cla
 Route::get('admin/support/request/status/toggle/{id}', [SupportRequestController::class, 'toggleStatus'])->name('admin.support.request.toggle.status');
 Route::post('admin/support/request/{id}/update-role', [SupportRequestController::class, 'updateRole'])->name('admin.support.users.updateRole');
 
+## Donate
+Route::get('admin/donate/index',  [DonateController::class, 'index'])->name('admin.donate.index');
+Route::get('admin/donate/create', [DonateController::class, 'create'])->name('admin.donate.create');
+Route::get('admin/donate/edit/{id}', [DonateController::class, 'edit'])->name('admin.donate.edit');
+Route::post('admin/donate/store', [DonateController::class, 'store'])->name('admin.donate.store');
+Route::post('admin/donate/update/{id}', [DonateController::class, 'update'])->name('admin.donate.update');
+Route::post('admin/donate/destroy/{id}', [DonateController::class, 'destroy'])->name('admin.donate.destroy');
+Route::get('admin/donate/status/toggle/{id}', [DonateController::class, 'toggleStatus'])->name('admin.donate.toggle.status');
+Route::post('admin/donate/{id}/update-role', [DonateController::class, 'updateRole'])->name('admin.support.users.updateRole');
 
 
-
+## Setting
+Route::get('admin/payment/setting/index',  [PaymentSettingController::class, 'index'])->name('admin.payment.setting.index');
+Route::post('admin/payment/setting/update/{id}', [PaymentSettingController::class, 'update'])->name('admin.payment.setting.donate.update');
 
 ###################### Frontend Route
 ###################### Frontend Route
@@ -161,4 +175,3 @@ Route::post('/settings/update', [SiteSettingController::class, 'update'])->name(
 
 
 Route::get('/locations/{type}/{id?}', [LocationController::class, 'getData']);
-

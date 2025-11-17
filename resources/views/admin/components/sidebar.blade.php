@@ -60,6 +60,12 @@
 
         <hr>
         <li>
+            <a href="{{ route('admin.payment.setting.index') }}">
+                <div class="parent-icon"><i class='bx bx-cookie'></i></div>
+                <div class="menu-title">Payment Setting</div>
+            </a>
+        </li>
+        <li>
             <a href="{{ route('home') }}" target="_blank">
                 <div class="parent-icon"><i class='bx bx-cookie'></i></div>
                 <div class="menu-title">View Website</div>
