@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\DonateController;
+use App\Http\Controllers\Backend\ExpenseController;
 use App\Http\Controllers\Backend\LocationController;
 use App\Http\Controllers\Backend\MemberController;
 use App\Http\Controllers\Backend\MyRoleController;
@@ -146,6 +147,21 @@ Route::post('admin/donate/{id}/update-role', [DonateController::class, 'updateRo
 ## Setting
 Route::get('admin/payment/setting/index',  [PaymentSettingController::class, 'index'])->name('admin.payment.setting.index');
 Route::post('admin/payment/setting/update/{id}', [PaymentSettingController::class, 'update'])->name('admin.payment.setting.donate.update');
+
+
+
+
+## Expense
+Route::get('admin/expense/index',  [ExpenseController::class, 'index'])->name('admin.expense.index');
+Route::get('admin/expense/create', [ExpenseController::class, 'create'])->name('admin.expense.create');
+Route::get('admin/expense/edit/{id}', [ExpenseController::class, 'edit'])->name('admin.expense.edit');
+Route::post('admin/expense/store', [ExpenseController::class, 'store'])->name('admin.expense.store');
+Route::post('admin/expense/update/{id}', [ExpenseController::class, 'update'])->name('admin.expense.update');
+Route::post('admin/expense/destroy/{id}', [ExpenseController::class, 'destroy'])->name('admin.expense.destroy');
+
+
+
+
 
 ###################### Frontend Route
 ###################### Frontend Route
