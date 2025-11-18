@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\DonateController;
 use App\Http\Controllers\Frontend\SupportRequestController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,3 +19,4 @@ Route::get('contact', function () {
 Route::get('support/request/index',  [SupportRequestController::class, 'index'])->name('support.request.index');
 Route::post('support/request/store', [SupportRequestController::class, 'store'])->name('support.request.store');
 
+Route::get('donate/index', [DonateController::class, 'index'])->name('donate.index');

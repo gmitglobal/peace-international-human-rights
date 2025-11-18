@@ -214,20 +214,25 @@
                     <div class="info-card">
                         <h3 class="section-title">Send Donate</h3>
 
-                        <form action="{{ route('support.request.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('admin.donate.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             <!-- Basic Info -->
                             <div class="form-section-title">Your Information</div>
                             <div class="row">
-                                <div class="col-lg-6 mb-3">
+                                <div class="col-lg-4 mb-3">
                                     <label class="form-label">Name <span class="text-danger">*</span></label>
                                     <input type="text" name="name" class="form-control" placeholder="Your Name"
                                         required>
                                 </div>
-                                <div class="col-lg-6 mb-3">
+                                <div class="col-lg-4 mb-3">
                                     <label class="form-label">Mobile <span class="text-danger">*</span></label>
                                     <input type="text" name="mobile" class="form-control" placeholder="Your Mobile"
+                                        required>
+                                </div>
+                                <div class="col-lg-4 mb-3">
+                                    <label class="form-label">Amount <span class="text-danger">*</span></label>
+                                    <input type="text" name="real_amount" class="form-control" placeholder="Your Amount"
                                         required>
                                 </div>
                             </div>
@@ -327,15 +332,15 @@
                             <div class="row mb-3">
                                 <div class="col-lg-4 mb-3">
                                     <label>Select Division <span class="text-danger">*</span></label>
-                                    <select name="division" id="divisionSelect" class="form-select" required></select>
+                                    <select name="division_id" id="divisionSelect" class="form-select" required></select>
                                 </div>
                                 <div class="col-lg-4 mb-3">
                                     <label>Select District <span class="text-danger">*</span></label>
-                                    <select name="district" id="districtSelect" class="form-select" required></select>
+                                    <select name="district_id" id="districtSelect" class="form-select" required></select>
                                 </div>
                                 <div class="col-lg-4 mb-3">
                                     <label>Select Thana <span class="text-danger">*</span></label>
-                                    <select name="thana" id="thanaSelect" class="form-select" required></select>
+                                    <select name="thana_id" id="thanaSelect" class="form-select" required></select>
                                 </div>
                             </div>
 
@@ -357,8 +362,9 @@
                                 </div>
                             </div>
                             <hr>
-                            <button type="submit" class="btn btn-primary btn-lg mt-2">Send Message</button>
+                            <button type="submit" class="btn btn-primary btn-lg mt-2">Donate</button>
                         </form>
+
                     </div>
                 </div>
             </div>

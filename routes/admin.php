@@ -135,14 +135,13 @@ Route::post('admin/support/request/{id}/update-role', [SupportRequestController:
 
 ## Donate
 Route::get('admin/donate/index',  [DonateController::class, 'index'])->name('admin.donate.index');
-Route::get('admin/donate/create', [DonateController::class, 'create'])->name('admin.donate.create');
+// Route::get('admin/donate/create', [DonateController::class, 'create'])->name('admin.donate.create');
 Route::get('admin/donate/edit/{id}', [DonateController::class, 'edit'])->name('admin.donate.edit');
 Route::post('admin/donate/store', [DonateController::class, 'store'])->name('admin.donate.store');
 Route::post('admin/donate/update/{id}', [DonateController::class, 'update'])->name('admin.donate.update');
 Route::post('admin/donate/destroy/{id}', [DonateController::class, 'destroy'])->name('admin.donate.destroy');
 Route::get('admin/donate/status/toggle/{id}', [DonateController::class, 'toggleStatus'])->name('admin.donate.toggle.status');
 Route::post('admin/donate/{id}/update-role', [DonateController::class, 'updateRole'])->name('admin.support.users.updateRole');
-
 
 ## Setting
 Route::get('admin/payment/setting/index',  [PaymentSettingController::class, 'index'])->name('admin.payment.setting.index');

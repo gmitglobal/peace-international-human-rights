@@ -22,7 +22,7 @@
                     @endif
 
                 </ul>
-                <a href="{{ route('admin.donate.index') }}" class="btn btn-primary ms-lg-3">Donate</a>
+                <a href="{{ route('donate.index') }}" class="btn btn-primary ms-lg-3">Donate</a>
             </div>
         </div>
     </nav>

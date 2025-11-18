@@ -51,6 +51,13 @@
         </li>
 
         <li>
+            <a href="{{ route('admin.donate.index') }}">
+                <div class="parent-icon"><i class='bx bx-cookie'></i></div>
+                <div class="menu-title">Manage Donate</div>
+            </a>
+        </li>
+
+        <li>
             <a href="{{ route('admin.role.index') }}">
                 <div class="parent-icon"><i class='bx bx-cookie'></i></div>
                 <div class="menu-title">Manage Roles</div>
