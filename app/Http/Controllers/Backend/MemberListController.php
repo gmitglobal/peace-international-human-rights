@@ -58,6 +58,6 @@ class MemberListController extends Controller
             ]
         );
 
-        return view('admin.expense.index', compact('paginatedData'));
+        return view('admin.member-list.index', compact('paginatedData'));
     }
 }

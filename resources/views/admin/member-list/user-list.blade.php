@@ -50,7 +50,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($expenses as $key => $item)
+                            @forelse ($items as $key => $item)
                                 <tr>
                                     <td class="text-center">{{ $key + 1 }}</td>
                                     <td class="text-center">
@@ -243,7 +243,7 @@
 
                 <!-- Pagination -->
                 <div class="mt-3">
-                    {{ $expenses->links('pagination::bootstrap-5') }}
+                    {{ $items->links('pagination::bootstrap-5') }}
                 </div>
             </div>
         </div>

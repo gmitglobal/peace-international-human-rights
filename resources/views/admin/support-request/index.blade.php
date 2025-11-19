@@ -116,7 +116,7 @@
                                 </tr>
                             @empty
                                 <tr class="text-center">
-                                    <td colspan="5">No activities found.</td>
+                                    <td colspan="10">No activities found.</td>
                                 </tr>
                             @endforelse
                         </tbody>

@@ -40,7 +40,7 @@ class MemberController extends Controller
         $myRoles = MyRole::where('status', '=', 1)->get(['id', 'name']);
 
         // Return to view
-        return view('admin.member-list.index', compact('items', 'search', 'myRoles'));
+        return view('admin.member-list.user-list', compact('items', 'search', 'myRoles'));
     } ## End Mehtod
 
 

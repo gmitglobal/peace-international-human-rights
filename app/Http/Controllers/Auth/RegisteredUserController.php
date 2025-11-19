@@ -32,9 +32,11 @@ class RegisteredUserController extends Controller
     // 
     public function store(Request $request): RedirectResponse
     {
+        // dd($request->membership);
         $request->validate([
             'name'        => ['required', 'string', 'max:255'],
             'phone'       => ['required', 'string', 'max:20', 'unique:users'],
+            'membership'  => ['required', 'string'],
             'email'       => ['nullable', 'string', 'email', 'max:255', 'unique:users'],
             'password'    => ['required', 'confirmed', Rules\Password::defaults()],
             'referred_by' => ['nullable', 'exists:users,refer_id'],
@@ -61,6 +63,7 @@ class RegisteredUserController extends Controller
                 'refer_id'    => $newReferId,
                 'refered_by'  => $request->referred_by,
                 'phone'       => $request->phone,
+                'membership'  => $request->membership,
                 'email'       => $request->email,
                 'password'    => Hash::make($request->password),
             ]);

@@ -39,6 +39,8 @@ return new class extends Migration {
             $table->string('signature')->nullable();
             $table->string('count')->default(0);
             $table->integer('role_id')->nullable();
+            $table->string('membership')->nullable();
+            $table->decimal('membership_amount')->default(0);
             $table->string('status')->default(0);
 
             $table->rememberToken();

@@ -129,36 +129,39 @@
                                             <div class="col-sm-12">
                                                 <label for="inputLastName" class="form-label">Full Name</label>
                                                 <input type="text" name="name" :value="old('name')"
-                                                    class="form-control" id="inputLastName" placeholder="Full Name">
+                                                    class="form-control" id="inputLastName" placeholder="Full Name"
+                                                    required>
                                                 <x-input-error :messages="$errors->get('name')" class="mt-2 text-danger" />
                                             </div>
-
-                                            <!-- Phone -->
-                                            {{-- <div class="mt-4">
-                                                <x-input-label for="phone" :value="__('Phone Number')" />
-                                                <x-text-input id="phone" class="block mt-1 w-full" type="text"
-                                                    name="phone" required autocomplete="phone" />
-                                                <x-input-error :messages="$errors->get('phone')" class="mt-2" />
-                                            </div> --}}
 
                                             <div class="col-12">
                                                 <label for="inputPhoneAddress" class="form-label">Phone Number</label>
 
                                                 <input type="phone" name="phone" :value="old('phone')"
-                                                    class="form-control" id="inputPhoneAddress"
-                                                    placeholder="Your Phone">
+                                                    class="form-control" id="inputPhoneAddress" placeholder="Your Phone"
+                                                    required>
                                                 <x-input-error :messages="$errors->get('phone')" class="mt-2 text-danger" />
                                             </div>
 
                                             <div class="col-12">
                                                 <label for="inputReferId" class="form-label">Reference ID</label>
 
-                                                <input type="referred_by" name="referred_by" :value="old('referred_by')"
-                                                    class="form-control" id="inputReferId"
+                                                <input type="referred_by" name="referred_by"
+                                                    :value="old('referred_by')" class="form-control" id="inputReferId"
                                                     placeholder="Reference ID">
                                                 <x-input-error :messages="$errors->get('referred_by')" class="mt-2 text-danger" />
                                             </div>
 
+                                            <div class="col-12">
+                                                <label for="inputReferId" class="form-label">Membership</label>
+
+                                                <select class="form-select form-select-sm"
+                                                    aria-label="Small select example" name="membership" required>
+                                                    <option value="">Select Membership</option>
+                                                    <option value="Member">Member</option>
+                                                    <option value="Lifetime Member">Lifetime Member</option>
+                                                </select>
+                                            </div>
 
                                             <div class="col-12">
                                                 <label for="inputEmailAddress" class="form-label">Email
@@ -174,8 +177,8 @@
                                                 <label for="inputChoosePassword" class="form-label">Password</label>
                                                 <div class="input-group" id="show_hide_password">
                                                     <input type="password" name="password" id="inputChoosePassword"
-                                                        class="form-control border-end-0"
-                                                        placeholder="Enter Password">
+                                                        class="form-control border-end-0" placeholder="Enter Password"
+                                                        required>
                                                     <a href="javascript:;" class="input-group-text bg-transparent">
                                                         <i class='bx bx-hide'></i>
                                                     </a>

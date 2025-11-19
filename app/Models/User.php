@@ -39,6 +39,8 @@ class User extends Authenticatable
         'nid',
         'signature',
         'role',
+        'membership',
+        'membership_amount',
         'status',
     ];
 
