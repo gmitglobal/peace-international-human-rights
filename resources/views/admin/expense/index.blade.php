@@ -29,6 +29,14 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="alert alert-primary" role="alert">
+                    <strong>Total Sum: {{ $total_sum }} BDT</strong>
+                </div>
+            </div>
+        </div>
+
         <!-- Category Table -->
         <div class="card">
             <div class="card-body">

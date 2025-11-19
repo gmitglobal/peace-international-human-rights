@@ -21,7 +21,10 @@ class ExpenseController extends Controller
             ->paginate(10)
             ->withQueryString();
 
-        return view('admin.expense.index', compact('expenses'));
+
+        $total_sum = Expense::sum('amount');
+
+        return view('admin.expense.index', compact('expenses', 'total_sum'));
     }
 
     /**
