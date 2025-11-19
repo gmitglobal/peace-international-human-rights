@@ -65,6 +65,13 @@
         </li>
 
         <li>
+            <a href="{{ route('admin.member.list.index') }}">
+                <div class="parent-icon"><i class='bx bx-cookie'></i></div>
+                <div class="menu-title">All Memeber List</div>
+            </a>
+        </li>
+
+        <li>
             <a href="{{ route('admin.role.index') }}">
                 <div class="parent-icon"><i class='bx bx-cookie'></i></div>
                 <div class="menu-title">Manage Roles</div>

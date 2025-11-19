@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\DonateController;
 use App\Http\Controllers\Backend\ExpenseController;
 use App\Http\Controllers\Backend\LocationController;
 use App\Http\Controllers\Backend\MemberController;
+use App\Http\Controllers\Backend\MemberListController;
 use App\Http\Controllers\Backend\MyRoleController;
 use App\Http\Controllers\Backend\PaymentSettingController;
 use App\Http\Controllers\Backend\ReferController;
@@ -148,9 +149,6 @@ Route::post('admin/donate/{id}/update-role', [DonateController::class, 'updateRo
 Route::get('admin/payment/setting/index',  [PaymentSettingController::class, 'index'])->name('admin.payment.setting.index');
 Route::post('admin/payment/setting/update/{id}', [PaymentSettingController::class, 'update'])->name('admin.payment.setting.donate.update');
 
-
-
-
 ## Expense
 Route::get('admin/expense/index',  [ExpenseController::class, 'index'])->name('admin.expense.index');
 Route::get('admin/expense/create', [ExpenseController::class, 'create'])->name('admin.expense.create');
@@ -160,6 +158,9 @@ Route::post('admin/expense/update/{id}', [ExpenseController::class, 'update'])->
 Route::post('admin/expense/destroy/{id}', [ExpenseController::class, 'destroy'])->name('admin.expense.destroy');
 
 
+
+## Member List
+Route::get('admin/member/list/index',  [MemberListController::class, 'index'])->name('admin.member.list.index');
 
 
 
