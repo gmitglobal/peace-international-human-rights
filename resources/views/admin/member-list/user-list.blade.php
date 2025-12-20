@@ -37,9 +37,11 @@
                                 <th>#</th>
                                 <th>Image</th>
                                 <th>Refer ID</th>
+                                <th>Refered By</th>
                                 <th>Name</th>
                                 <th>Phone</th>
                                 <th>Membership</th>
+                                <th>Membership Amount</th>
                                 <th>Division</th>
                                 <th>District</th>
                                 <th>Thana</th>
@@ -58,9 +60,11 @@
                                             class="img-thumbnail" width="60" height="60" alt="Image">
                                     </td>
                                     <td class="text-center">{{ $item->refer_id }}</td>
+                                    <td class="text-center">{{ $item->refered_by }}</td>
                                     <td class="text-center">{{ $item->name }}</td>
                                     <td class="text-center">{{ $item->phone }}</td>
                                     <td class="text-center">{{ $item->membership }}</td>
+                                    <td class="text-center">{{ $item->membership_amount }}</td>
                                     <td class="text-center">{{ $item->divisions->name ?? 'N/A' }}</td>
                                     <td class="text-center">{{ $item->districts->name ?? 'N/A' }}</td>
                                     <td class="text-center">{{ $item->thanas->name ?? 'N/A' }}</td>
@@ -226,9 +230,11 @@
                                 <th>#</th>
                                 <th>Image</th>
                                 <th>Refer ID</th>
+                                <th>Refered By</th>
                                 <th>Name</th>
                                 <th>Phone</th>
                                 <th>Membership</th>
+                                <th>Membership Amount</th>
                                 <th>Division</th>
                                 <th>District</th>
                                 <th>Thana</th>

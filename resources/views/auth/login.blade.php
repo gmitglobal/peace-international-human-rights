@@ -28,7 +28,7 @@
 <body class="bg-login">
     <!--wrapper-->
     <div class="wrapper">
-        <nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
+        {{-- <nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
             <div class="container">
                 <a class="navbar-brand fw-bold text-primary" href="#">
                     <img src="{{ asset('clients/images/logo/logo.png') }}" alt="Peace Logo" height="120"
@@ -49,7 +49,10 @@
                     <a href="#donate" class="btn btn-primary ms-lg-3">Donate</a>
                 </div>
             </div>
-        </nav>
+        </nav> --}}
+
+        <!-- Navbar -->
+        @include('clients.components.navbar')
 
         <div class="section-authentication-signin d-flex align-items-center justify-content-center my-5 my-lg-0">
             <div class="container-fluid">

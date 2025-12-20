@@ -205,7 +205,7 @@
                             <div class="col-sm-3"></div>
                             <div class="col-sm-9">
                                 <img id="file-ip-1-preview"
-                                    src="{{ !empty($data->photo) ? url($data->photo) : url('no_image.jpg') }}"
+                                    src="{{ !empty($data->photo) ? asset($data->photo) : asset('no_image.jpg') }}"
                                     alt="Admin" class="img-thumbnail rounded" width="110">
                             </div>
                         </div>
@@ -227,8 +227,8 @@
                             <div class="col-sm-3"></div>
                             <div class="col-sm-9">
                                 <img id="file-ip-2-preview"
-                                    src="{{ !empty($data->nid) ? url($data->nid) : url('no_image.jpg') }}" alt="Admin"
-                                    class="img-thumbnail rounded" width="110">
+                                    src="{{ !empty($data->nid) ? asset($data->nid) : asset('no_image.jpg') }}"
+                                    alt="Admin" class="img-thumbnail rounded" width="110">
                             </div>
                         </div>
 
@@ -407,7 +407,7 @@
                         option.value = thana.id;
                         option.textContent = thana.name;
                         if (parseInt(selectedThanaId) === parseInt(thana.id)) option.selected =
-                        true;
+                            true;
                         thanaSelect.appendChild(option);
                     });
                 } catch (error) {

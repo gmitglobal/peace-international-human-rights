@@ -64,10 +64,29 @@
             </a>
         </li>
 
+
+
+        <li>
+            <a href="{{ route('admin.photo.gallery.index') }}">
+                <div class="parent-icon"><i class='bx bx-cookie'></i></div>
+                <div class="menu-title">Photo Gallery</div>
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('admin.video.gallery.index') }}">
+                <div class="parent-icon"><i class='bx bx-cookie'></i></div>
+                <div class="menu-title">Video Gallery</div>
+            </a>
+        </li>
+
+
+
+
         <li>
             <a href="{{ route('admin.member.list.index') }}">
                 <div class="parent-icon"><i class='bx bx-cookie'></i></div>
-                <div class="menu-title">All Memeber List</div>
+                <div class="menu-title">All Member List</div>
             </a>
         </li>
 

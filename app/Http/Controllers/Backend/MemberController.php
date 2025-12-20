@@ -53,8 +53,14 @@ class MemberController extends Controller
     public function toggleStatus($id)
     {
         $admin = User::findOrFail($id);
-        // $admin->refer_id = ;
-        $admin->status   = $admin->status == 1 ? 0 : 1;
+
+        if ($admin->membership == "Lifetime Member") {
+            $admin->membership_amount = 6500;
+        } else {
+            $admin->membership_amount = 1000;
+        };
+
+        $admin->status = $admin->status == 1 ? 0 : 1;
         $admin->save();
 
         return redirect()->back()->with('success', 'Status updated successfully.');
@@ -83,7 +89,6 @@ class MemberController extends Controller
         $fullPath = public_path($imagePath);
         if (file_exists($fullPath)) @unlink($fullPath);
     }
-
 
     public function changeRole(Request $request, $id)
     {

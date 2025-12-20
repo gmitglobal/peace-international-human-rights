@@ -80,7 +80,7 @@
     <!--wrapper-->
     <div class="wrapper">
 
-        <nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
+        {{-- <nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
             <div class="container">
                 <a class="navbar-brand fw-bold text-primary" href="#">
                     <img src="{{ asset('clients/images/logo/logo.png') }}" alt="Peace Logo" height="120"
@@ -101,7 +101,10 @@
                     <a href="#donate" class="btn btn-primary ms-lg-3">Donate</a>
                 </div>
             </div>
-        </nav>
+        </nav> --}}
+
+        <!-- Navbar -->
+        @include('clients.components.navbar')
 
         <div class="d-flex align-items-center justify-content-center my-5 my-lg-0">
             <div class="container">
@@ -146,9 +149,8 @@
                                             <div class="col-12">
                                                 <label for="inputReferId" class="form-label">Reference ID</label>
 
-                                                <input type="referred_by" name="referred_by"
-                                                    :value="old('referred_by')" class="form-control" id="inputReferId"
-                                                    placeholder="Reference ID">
+                                                <input type="referred_by" name="referred_by" :value="old('referred_by')"
+                                                    class="form-control" id="inputReferId" placeholder="Reference ID">
                                                 <x-input-error :messages="$errors->get('referred_by')" class="mt-2 text-danger" />
                                             </div>
 

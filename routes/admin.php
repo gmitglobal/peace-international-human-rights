@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\MemberController;
 use App\Http\Controllers\Backend\MemberListController;
 use App\Http\Controllers\Backend\MyRoleController;
 use App\Http\Controllers\Backend\PaymentSettingController;
+use App\Http\Controllers\Backend\PhotoController;
 use App\Http\Controllers\Backend\ReferController;
 use App\Http\Controllers\Backend\ReferListController;
 use App\Http\Controllers\Backend\SettingController;
@@ -18,6 +19,7 @@ use App\Http\Controllers\Backend\ShopController;
 use App\Http\Controllers\Backend\SiteSettingController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SupportRequestController;
+use App\Http\Controllers\Backend\VideoController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -191,3 +193,30 @@ Route::post('/settings/update', [SiteSettingController::class, 'update'])->name(
 
 
 Route::get('/locations/{type}/{id?}', [LocationController::class, 'getData']);
+
+
+
+
+
+
+
+
+
+
+## Photo Gallery
+Route::get('admin/photo/gallery/index',  [PhotoController::class, 'index'])->name('admin.photo.gallery.index');
+Route::get('admin/photo/gallery/create', [PhotoController::class, 'create'])->name('admin.photo.gallery.create');
+Route::get('admin/photo/gallery/edit/{id}', [PhotoController::class, 'edit'])->name('admin.photo.gallery.edit');
+Route::post('admin/photo/gallery/store', [PhotoController::class, 'store'])->name('admin.photo.gallery.store');
+Route::post('admin/photo/gallery/update/{id}', [PhotoController::class, 'update'])->name('admin.photo.gallery.update');
+Route::post('admin/photo/gallery/destroy/{id}', [PhotoController::class, 'destroy'])->name('admin.photo.gallery.destroy');
+Route::get('admin/photo/gallery/status/toggle/{id}', [PhotoController::class, 'toggleStatus'])->name('admin.photo.gallery.status');
+
+## Video Gallery
+Route::get('admin/video/gallery/index',  [VideoController::class, 'index'])->name('admin.video.gallery.index');
+Route::get('admin/video/gallery/create', [VideoController::class, 'create'])->name('admin.video.gallery.create');
+Route::get('admin/video/gallery/edit/{id}', [VideoController::class, 'edit'])->name('admin.video.gallery.edit');
+Route::post('admin/video/gallery/store', [VideoController::class, 'store'])->name('admin.video.gallery.store');
+Route::post('admin/video/gallery/update/{id}', [VideoController::class, 'update'])->name('admin.video.gallery.update');
+Route::post('admin/video/gallery/destroy/{id}', [VideoController::class, 'destroy'])->name('admin.video.gallery.destroy');
+Route::get('admin/video/gallery/status/toggle/{id}', [VideoController::class, 'toggleStatus'])->name('admin.video.gallery.status');
