@@ -3,8 +3,8 @@
     <div class="container-fluid">
         <div class="row mb-3">
             <div class="col-lg-12">
-                <a class="btn btn-sm btn-outline-primary" href="{{ route('admin.photo.gallery.index') }}">
-                    <i class="fa fa-arrow-left"></i> Back to Photo Gallery Management List
+                <a class="btn btn-sm btn-outline-primary" href="{{ route('admin.video.gallery.index') }}">
+                    <i class="fa fa-arrow-left"></i> Back to Video Gallery Management List
                 </a>
             </div>
         </div>
@@ -14,7 +14,7 @@
             <div class="col-lg-8 col-md-12 col-sm-12">
                 <div class="card shadow-sm">
                     <div class="card-header bg-success text-white">
-                        <h5 class="mb-0 text-white"><i class="fas fa-folder-plus me-2"></i> Edit Photo Gallery Management
+                        <h5 class="mb-0 text-white"><i class="fas fa-folder-plus me-2"></i> Edit Video Gallery Management
                         </h5>
                     </div>
                     <div class="card-body">
