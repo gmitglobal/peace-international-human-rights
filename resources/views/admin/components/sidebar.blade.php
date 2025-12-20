@@ -21,128 +21,91 @@
             </a>
         </li>
 
-        {{-- @if (Auth::user()->role == 'admin') --}}
-        <li>
-            <a href="{{ route('admin.member.list') }}">
-                <div class="parent-icon"><i class='bx bx-cookie'></i></div>
-                <div class="menu-title">Member List</div>
-            </a>
-        </li>
+        @if (Auth::user()->membership == 'Admin')
+            <li>
+                <a href="{{ route('admin.member.list') }}">
+                    <div class="parent-icon"><i class='bx bx-cookie'></i></div>
+                    <div class="menu-title">Member List</div>
+                </a>
+            </li>
 
-        <li>
-            <a href="{{ route('admin.slider.index') }}">
-                <div class="parent-icon"><i class='bx bx-cookie'></i></div>
-                <div class="menu-title">Manage Slider</div>
-            </a>
-        </li>
+            <li>
+                <a href="{{ route('admin.slider.index') }}">
+                    <div class="parent-icon"><i class='bx bx-cookie'></i></div>
+                    <div class="menu-title">Manage Slider</div>
+                </a>
+            </li>
 
-        <li>
-            <a href="{{ route('admin.activities.index') }}">
-                <div class="parent-icon"><i class='bx bx-cookie'></i></div>
-                <div class="menu-title">Manage Activities</div>
-            </a>
-        </li>
+            <li>
+                <a href="{{ route('admin.activities.index') }}">
+                    <div class="parent-icon"><i class='bx bx-cookie'></i></div>
+                    <div class="menu-title">Manage Activities</div>
+                </a>
+            </li>
 
-        <li>
-            <a href="{{ route('admin.support.request.index') }}">
-                <div class="parent-icon"><i class='bx bx-cookie'></i></div>
-                <div class="menu-title">Support Request</div>
-            </a>
-        </li>
+            <li>
+                <a href="{{ route('admin.support.request.index') }}">
+                    <div class="parent-icon"><i class='bx bx-cookie'></i></div>
+                    <div class="menu-title">Support Request</div>
+                </a>
+            </li>
 
-        <li>
-            <a href="{{ route('admin.donate.index') }}">
-                <div class="parent-icon"><i class='bx bx-cookie'></i></div>
-                <div class="menu-title">Manage Donate</div>
-            </a>
-        </li>
+            <li>
+                <a href="{{ route('admin.donate.index') }}">
+                    <div class="parent-icon"><i class='bx bx-cookie'></i></div>
+                    <div class="menu-title">Manage Donate</div>
+                </a>
+            </li>
 
-        <li>
-            <a href="{{ route('admin.expense.index') }}">
-                <div class="parent-icon"><i class='bx bx-cookie'></i></div>
-                <div class="menu-title">Manage Expense</div>
-            </a>
-        </li>
+            <li>
+                <a href="{{ route('admin.expense.index') }}">
+                    <div class="parent-icon"><i class='bx bx-cookie'></i></div>
+                    <div class="menu-title">Manage Expense</div>
+                </a>
+            </li>
 
+            <li>
+                <a href="{{ route('admin.photo.gallery.index') }}">
+                    <div class="parent-icon"><i class='bx bx-cookie'></i></div>
+                    <div class="menu-title">Photo Gallery</div>
+                </a>
+            </li>
 
+            <li>
+                <a href="{{ route('admin.video.gallery.index') }}">
+                    <div class="parent-icon"><i class='bx bx-cookie'></i></div>
+                    <div class="menu-title">Video Gallery</div>
+                </a>
+            </li>
 
-        <li>
-            <a href="{{ route('admin.photo.gallery.index') }}">
-                <div class="parent-icon"><i class='bx bx-cookie'></i></div>
-                <div class="menu-title">Photo Gallery</div>
-            </a>
-        </li>
+            <li>
+                <a href="{{ route('admin.member.list.index') }}">
+                    <div class="parent-icon"><i class='bx bx-cookie'></i></div>
+                    <div class="menu-title">All Member List</div>
+                </a>
+            </li>
 
-        <li>
-            <a href="{{ route('admin.video.gallery.index') }}">
-                <div class="parent-icon"><i class='bx bx-cookie'></i></div>
-                <div class="menu-title">Video Gallery</div>
-            </a>
-        </li>
+            <li>
+                <a href="{{ route('admin.role.index') }}">
+                    <div class="parent-icon"><i class='bx bx-cookie'></i></div>
+                    <div class="menu-title">Manage Roles</div>
+                </a>
+            </li>
+            <hr>
+            <li>
+                <a href="{{ route('admin.payment.setting.index') }}">
+                    <div class="parent-icon"><i class='bx bx-cookie'></i></div>
+                    <div class="menu-title">Payment Setting</div>
+                </a>
+            </li>
+        @endif
 
-
-
-
-        <li>
-            <a href="{{ route('admin.member.list.index') }}">
-                <div class="parent-icon"><i class='bx bx-cookie'></i></div>
-                <div class="menu-title">All Member List</div>
-            </a>
-        </li>
-
-        <li>
-            <a href="{{ route('admin.role.index') }}">
-                <div class="parent-icon"><i class='bx bx-cookie'></i></div>
-                <div class="menu-title">Manage Roles</div>
-            </a>
-        </li>
-        {{-- @endif --}}
-
-        <hr>
-        <li>
-            <a href="{{ route('admin.payment.setting.index') }}">
-                <div class="parent-icon"><i class='bx bx-cookie'></i></div>
-                <div class="menu-title">Payment Setting</div>
-            </a>
-        </li>
         <li>
             <a href="{{ route('home') }}" target="_blank">
                 <div class="parent-icon"><i class='bx bx-cookie'></i></div>
                 <div class="menu-title">View Website</div>
             </a>
         </li>
-
-        {{-- <li>
-            <a href="{{ route('admin.shop.index') }}">
-                <div class="parent-icon"><i class='bx bx-cookie'></i></div>
-                <div class="menu-title">Shop</div>
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('admin.category.index') }}">
-                <div class="parent-icon"><i class='bx bx-cookie'></i></div>
-                <div class="menu-title">Category</div>
-            </a>
-        </li> --}}
-
-        {{-- <li class="menu-label">SETUP</li>
-
-        <li>
-            <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class="bx bx-grid-alt"></i>
-                </div>
-                <div class="menu-title">Manage Product</div>
-            </a>
-            <ul>
-                <li>
-                    <a href="#">
-                        <i class="bx bx-right-arrow-alt"></i>
-                        Add Product
-                    </a>
-                </li>
-
-            </ul>
-        </li> --}}
     </ul>
     <!--end navigation-->
 </div>
