@@ -25,21 +25,6 @@ class PhotoController extends Controller
         return view('admin.photo-gallery.index', compact('photoGalleries'));
     }
 
-
-
-
-
-
-
-
-
-
-    // sdfsdfasdf
-    // sdfsdfsdf
-    // sdfsdfsdf
-    // sdfsdfsdf
-    // sdfsdfsdf
-
     /**
      * Show the form for creating a category.
      */
