@@ -84,7 +84,7 @@
 
                                 <div class="mt-3">
                                     <img id="file-ip-1-preview"
-                                        src="{{ $activities->post_image ? asset($activities->post_image) : asset('no_image.jpg') }}"
+                                        src="{{ $activities->post_image ? asset('/public/'. $activities->post_image) : asset('no_image.jpg') }}"
                                         class="img-thumbnail" style="width: 200px; height: 200px;" alt="Image Preview">
                                 </div>
                             </div>

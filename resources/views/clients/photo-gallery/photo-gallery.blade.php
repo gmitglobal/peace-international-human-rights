@@ -62,7 +62,8 @@
                     <div class="col-lg-4 col-md-6 p-1">
                         <div class="photo-card">
                             <div class="photo-thumb">
-                                <img src="public/{{ asset($photogallery->post_image) }}" alt="{{ $photogallery->title }}">
+                                <img src="{{ asset('/public/' . $photogallery->post_image) }}"
+                                    alt="{{ $photogallery->title }}">
                             </div>
                             <div class="photo-content">
                                 <h5>{{ $photogallery->title }}</h5>
