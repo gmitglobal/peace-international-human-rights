@@ -49,7 +49,7 @@
                                 <tr>
                                     <td class="text-center">{{ $key + 1 }}</td>
                                     <td class="text-center">
-                                        <img src="{{ $activity->post_image ? asset('/public/'.$activity->post_image) : asset('no_image.jpg') }}"
+                                        <img src="{{ $activity->post_image ? asset('/public/' . $activity->post_image) : asset('no_image.jpg') }}"
                                             class="img-thumbnail" width="60" height="60" alt="post_image">
                                     </td>
                                     <td>{{ $activity->title }}</td>

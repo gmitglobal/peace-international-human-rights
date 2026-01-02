@@ -50,11 +50,11 @@
                                 <tr>
                                     <td class="text-center">{{ $key + 1 }}</td>
                                     <td class="text-center">
-                                        <img src="{{ $slider->background_image ? asset($slider->background_image) : asset('no_image.jpg') }}"
+                                        <img src="{{ $slider->background_image ? asset('/public/' . $slider->background_image) : asset('no_image.jpg') }}"
                                             class="img-thumbnail" width="60" height="60" alt="background_image">
                                     </td>
                                     <td class="text-center">
-                                        <img src="{{ $slider->logo_image ? asset($slider->logo_image) : asset('no_image.jpg') }}"
+                                        <img src="{{ $slider->logo_image ? asset('/public/' . $slider->logo_image) : asset('no_image.jpg') }}"
                                             class="img-thumbnail" width="60" height="60" alt="logo_image">
                                     </td>
                                     <td>{{ $slider->title }}</td>
