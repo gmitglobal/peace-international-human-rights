@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\PhotoGallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 
 class PhotoController extends Controller
 {
@@ -47,14 +46,10 @@ class PhotoController extends Controller
         $postImagePath = null;
 
         if ($request->hasFile('post_image')) {
-            $image = $request->file('post_image');
-            $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-
-            // Store in 'public/uploads/photo-gallery' folder
-            $path = $image->storeAs('public/uploads/photo-gallery', $imageName);
-
-            // Path for database (accessible via storage link)
-            $postImagePath = str_replace('public/', 'storage/', $path);
+            $image         = $request->file('post_image');
+            $imageName     = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('uploads/photo-gallery'), $imageName);
+            $postImagePath = 'uploads/photo-gallery/' . $imageName;
         }
 
         ## 💾 Save data to database
@@ -98,21 +93,17 @@ class PhotoController extends Controller
 
         if ($request->hasFile('post_image')) {
             // Delete old image if exists
-            if ($activity->post_image && Storage::exists($activity->post_image)) {
-                Storage::delete($activity->post_image);
+            if ($activity->post_image && file_exists(public_path($activity->post_image))) {
+                unlink(public_path($activity->post_image));
             }
 
-            // Upload new image using store
+            // Upload new image
             $image = $request->file('post_image');
             $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('uploads/photo-gallery'), $imageName);
 
-            // Store in 'public/photo-gallery' folder
-            $path = $image->storeAs('public/photo-gallery', $imageName);
-
-            // Get path for database (remove 'public/' to use with storage link)
-            $postImagePath = str_replace('public/', 'storage/', $path);
+            $postImagePath = 'uploads/photo-gallery/' . $imageName;
         }
-
 
         // 💾 Update the record
         $activity->update([
