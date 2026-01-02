@@ -48,8 +48,8 @@ class PhotoController extends Controller
         if ($request->hasFile('post_image')) {
             $image         = $request->file('post_image');
             $imageName     = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('uploads/photo-gallery'), $imageName);
-            $postImagePath = 'uploads/photo-gallery/' . $imageName;
+            $image->move(public_path('public/uploads/photo-gallery'), $imageName);
+            $postImagePath = 'public/uploads/photo-gallery/' . $imageName;
         }
 
         ## 💾 Save data to database
@@ -100,9 +100,9 @@ class PhotoController extends Controller
             // Upload new image
             $image = $request->file('post_image');
             $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('uploads/photo-gallery'), $imageName);
+            $image->move(public_path('public/uploads/photo-gallery'), $imageName);
 
-            $postImagePath = 'uploads/photo-gallery/' . $imageName;
+            $postImagePath = 'public/uploads/photo-gallery/' . $imageName;
         }
 
         // 💾 Update the record
