@@ -197,13 +197,6 @@ Route::get('/locations/{type}/{id?}', [LocationController::class, 'getData']);
 
 
 
-
-
-
-
-
-
-## Photo Gallery
 Route::get('admin/photo/gallery/index',  [PhotoController::class, 'index'])->name('admin.photo.gallery.index');
 Route::get('admin/photo/gallery/create', [PhotoController::class, 'create'])->name('admin.photo.gallery.create');
 Route::get('admin/photo/gallery/edit/{id}', [PhotoController::class, 'edit'])->name('admin.photo.gallery.edit');
