@@ -116,4 +116,58 @@ class SliderController extends Controller
         $slider = Slider::findOrFail($id);
         return view('admin.slider.edit', compact('slider'));
     }
+
+
+    public function update(Request $request, $id)
+    {
+        $slider = Slider::findOrFail($id);
+
+        // ✅ Validate inputs
+        $request->validate([
+            'title'             => 'nullable|string|max:255',
+            'subtitle'          => 'nullable|string|max:500',
+            'button1_text'      => 'nullable|string|max:100',
+            'button1_link'      => 'nullable|string|max:255',
+            'button2_text'      => 'nullable|string|max:100',
+            'button2_link'      => 'nullable|string|max:255',
+            'background_image'  => 'nullable|image|mimes:jpeg,png,jpg,svg,webp|max:2048',
+            'logo_image'        => 'nullable|image|mimes:jpeg,png,jpg,svg,webp|max:2048',
+        ]);
+
+        // 🖼️ Update background image
+        if ($request->hasFile('background_image')) {
+            if ($slider->background_image && file_exists(public_path($slider->background_image))) {
+                unlink(public_path($slider->background_image));
+            }
+
+            $file = $request->file('background_image');
+            $filename = time() . '_bg.' . $file->getClientOriginalExtension();
+            $file->move(public_path('uploads/sliders'), $filename);
+            $slider->background_image = 'uploads/sliders/' . $filename;
+        }
+
+        // 🖼️ Update logo image
+        if ($request->hasFile('logo_image')) {
+            if ($slider->logo_image && file_exists(public_path($slider->logo_image))) {
+                unlink(public_path($slider->logo_image));
+            }
+
+            $file = $request->file('logo_image');
+            $filename = time() . '_logo.' . $file->getClientOriginalExtension();
+            $file->move(public_path('uploads/sliders'), $filename);
+            $slider->logo_image = 'uploads/sliders/' . $filename;
+        }
+
+        // 💾 Update other fields
+        $slider->update([
+            'title'        => $request->title,
+            'subtitle'     => $request->subtitle,
+            'button1_text' => $request->button1_text,
+            'button1_link' => $request->button1_link,
+            'button2_text' => $request->button2_text,
+            'button2_link' => $request->button2_link,
+        ]);
+
+        return redirect()->back()->with('success', 'Slider updated successfully!');
+    }
 }

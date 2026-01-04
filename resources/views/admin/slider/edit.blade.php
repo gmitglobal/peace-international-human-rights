@@ -55,21 +55,22 @@
                         @endif
 
                         {{-- Form --}}
-                        <form action="{{ route('admin.slider.update', 1) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('admin.slider.update', $slider->id) }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
 
                             <!-- Title -->
                             <div class="mb-3">
                                 <label for="title" class="form-label">Title</label>
                                 <input type="text" name="title" id="title" class="form-control form-control-sm"
-                                    placeholder="Enter Title" value="{{ old('title') }}">
+                                    placeholder="Enter Title" value="{{ old('title', $slider->title) }}">
                             </div>
 
                             <!-- Sub Title -->
                             <div class="mb-3">
                                 <label for="subtitle" class="form-label">Sub Title</label>
                                 <input type="text" name="subtitle" id="subtitle" class="form-control form-control-sm"
-                                    placeholder="Enter Sub Title" value="{{ old('subtitle') }}">
+                                    placeholder="Enter Sub Title" value="{{ old('subtitle', $slider->subtitle) }}">
                             </div>
 
                             <div class="row">
@@ -79,7 +80,7 @@
                                         <label for="button1_text" class="form-label">Button-1 Text</label>
                                         <input type="text" name="button1_text" id="button1_text"
                                             class="form-control form-control-sm" placeholder="Enter Button-1 Text"
-                                            value="{{ old('button1_text') }}">
+                                            value="{{ old('button1_text', $slider->button1_text) }}">
                                     </div>
                                 </div>
                                 <div class="col-6">
@@ -88,7 +89,7 @@
                                         <label for="button1_link" class="form-label">Button-1 Link</label>
                                         <input type="text" name="button1_link" id="button1_link"
                                             class="form-control form-control-sm" placeholder="Enter Button-1 Link"
-                                            value="{{ old('button1_link') }}">
+                                            value="{{ old('button1_link', $slider->button1_link) }}">
                                     </div>
                                 </div>
                             </div>
@@ -100,7 +101,7 @@
                                         <label for="button2_text" class="form-label">Button-2 Text</label>
                                         <input type="text" name="button2_text" id="button2_text"
                                             class="form-control form-control-sm" placeholder="Enter Button-2 Text"
-                                            value="{{ old('button2_text') }}">
+                                            value="{{ old('button2_text', $slider->button2_text) }}">
                                     </div>
                                 </div>
                                 <div class="col-6">
@@ -109,7 +110,7 @@
                                         <label for="button2_link" class="form-label">Button-2 Link</label>
                                         <input type="text" name="button2_link" id="button2_link"
                                             class="form-control form-control-sm" placeholder="Enter Button-2 Link"
-                                            value="{{ old('button2_link') }}">
+                                            value="{{ old('button2_link', $slider->button2_link) }}">
                                     </div>
                                 </div>
                             </div>
@@ -128,8 +129,9 @@
                                 </div>
 
                                 <div class="mt-3">
-                                    <img id="file-ip-1-preview" src="{{ asset('no_image.jpg') }}" class="img-thumbnail"
-                                        style="width: 100px; height: 80px;" alt="Image Preview">
+                                    <img id="file-ip-1-preview"
+                                        src="public/{{ $slider->background_image ? asset($slider->background_image) : asset('no_image.jpg') }}"
+                                        class="img-thumbnail" style="width: 100px; height: 80px;" alt="Image Preview">
                                 </div>
                             </div>
 
@@ -146,8 +148,9 @@
                                         style="color: red; display: none; margin-top:5px"></small></div>
 
                                 <div class="mt-3">
-                                    <img id="file-ip-2-preview" src="{{ asset('no_image.jpg') }}" class="img-thumbnail"
-                                        style="width: 100px; height: 80px;" alt="Image Preview">
+                                    <img id="file-ip-2-preview"
+                                        src="public/{{ $slider->logo_image ? asset($slider->logo_image) : asset('no_image.jpg') }}"
+                                        class="img-thumbnail" style="width: 100px; height: 80px;" alt="Image Preview">
                                 </div>
                             </div>
 
@@ -167,7 +170,7 @@
 
     {{-- Preview Image Script --}}
     <script>
-        function showPreview(event) {
+        function showPreview1(event) {
             const input = event.target;
             const file = input.files[0];
 
@@ -179,6 +182,22 @@
             }
 
             const preview = document.getElementById('file-ip-1-preview');
+            preview.src = URL.createObjectURL(event.target.files[0]);
+            preview.onload = () => URL.revokeObjectURL(preview.src); // Free memory
+        }
+
+        function showPreview2(event) {
+            const input = event.target;
+            const file = input.files[0];
+
+            // Check file size (limit: 50MB)
+            if (file && file.size > 50 * 1024 * 1024) {
+                alert("File size exceeds 50MB limit.");
+                input.value = ""; // Clear file input
+                return; // Stop preview generation
+            }
+
+            const preview = document.getElementById('file-ip-2-preview');
             preview.src = URL.createObjectURL(event.target.files[0]);
             preview.onload = () => URL.revokeObjectURL(preview.src); // Free memory
         }
