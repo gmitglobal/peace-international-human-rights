@@ -130,7 +130,7 @@
 
                                 <div class="mt-3">
                                     <img id="file-ip-1-preview"
-                                        src="public/{{ $slider->background_image ? asset($slider->background_image) : asset('no_image.jpg') }}"
+                                        src="{{ !empty($slider->background_image) ? asset('public/' . $slider->background_image) : asset('no_image.jpg') }}"
                                         class="img-thumbnail" style="width: 100px; height: 80px;" alt="Image Preview">
                                 </div>
                             </div>
@@ -149,7 +149,7 @@
 
                                 <div class="mt-3">
                                     <img id="file-ip-2-preview"
-                                        src="public/{{ $slider->logo_image ? asset($slider->logo_image) : asset('no_image.jpg') }}"
+                                        src="{{ !empty($slider->logo_image) ? asset('public/' . $slider->logo_image) : asset('no_image.jpg') }}"
                                         class="img-thumbnail" style="width: 100px; height: 80px;" alt="Image Preview">
                                 </div>
                             </div>
